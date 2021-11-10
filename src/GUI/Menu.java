@@ -15,9 +15,10 @@ public class Menu extends Application{
 		// TODO
 		Image imageview = new Image("testtest.png");
 		StackPane root = new StackPane();
+		MenuController menuControl = new MenuController();
 		Canvas canvas = new Canvas(1400,800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		root.getChildren().add(canvas);
+		root.getChildren().addAll(canvas);
 		gc.drawImage(imageview, 0, 0,1400,800);
 		
 		Scene scene = new Scene(root);
