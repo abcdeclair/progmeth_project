@@ -1,29 +1,34 @@
 package GUI;
 
-import javafx.application.Application;
 
+import javafx.scene.media.Media;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class Menu extends Application{
 	
-	public void start(Stage primaryStage) {
+	public static final String bgm = "/originalsoundtrack.mp3";
+	public static AudioClip backgroundMusic;
+	public void start(Stage primaryStage) throws Exception {
 		// TODO
-		Image imageview = new Image("testtest.png");
-		StackPane root = new StackPane();
-		Canvas canvas = new Canvas(1400,800);
-		GraphicsContext gc = canvas.getGraphicsContext2D();
-		root.getChildren().add(canvas);
-		gc.drawImage(imageview, 0, 0,1400,800);
 		
+		backgroundMusic = new AudioClip(getClass().getResource(bgm).toExternalForm());
+		backgroundMusic.setCycleCount(AudioClip.INDEFINITE);
+		backgroundMusic.play();
+
+		Parent root = FXMLLoader.load(getClass().getResource("Setting.fxml"));
 		Scene scene = new Scene(root);
 	    primaryStage.setScene(scene);
 	    primaryStage.setTitle("Mobiews_Ocean");
-	    //primaryStage.setResizable(false);
+	    primaryStage.setResizable(false);
 	    primaryStage.show();
 	}
 
