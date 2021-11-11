@@ -32,7 +32,7 @@ public abstract class Entity {
 	
 	public abstract void move();
 	
-	public abstract void updateState( GameManager gameManager, GameMapManager gameMapManager, PlayerFish playerFish);
+	//public abstract void updateState( GameManager gameManager, GameMapManager gameMapManager, PlayerFish playerFish);
 
 	public void setPositon( int x, int y) {
         this.x = x;
