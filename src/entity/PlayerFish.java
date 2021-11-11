@@ -5,9 +5,7 @@ import logic.Direction;
 public class PlayerFish extends Entity{
 	private int score = 0;
     private int size = 1;
-    private int frenzy = 0;
     private int growth = 0;
-    private int lives = 3;
     
     public PlayerFish() {
         super();
@@ -17,9 +15,7 @@ public class PlayerFish extends Entity{
     
     public void resetForNewLevel() {
         size = 1;
-        frenzy = 0;
         growth = 0;
-        lives = 3;
         width = height = 50;
     }
 
@@ -49,17 +45,6 @@ public class PlayerFish extends Entity{
     public void setSize( int size) {
         this.size = size;
     }
-
-    public int getFrenzy() {
-        return frenzy;
-    }
-
-    public void setFrenzy( int frenzy) {
-        if (this.frenzy == 100 && frenzy != 0) {
-            return;
-        }
-        this.frenzy = frenzy; 
-    }
     
     public int getGrowth() {
         return growth;
@@ -74,20 +59,11 @@ public class PlayerFish extends Entity{
         }
     }
 
-    public int getLives() {
-        return lives;
-    }
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public synchronized void setLives( int lives) {
-        this.lives = lives;
-    }
-    
-    @Override
-    public void move() {
-    }
-
-    @Override
-    public void updateState( GameManager gameManager, GameMapManager gameMapManager, PlayerFish playerFish) {
-    }
 
 }

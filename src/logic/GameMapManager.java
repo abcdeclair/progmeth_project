@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import entity.EnemyFish;
 import entity.base.Entity;
@@ -83,5 +84,35 @@ public class GameMapManager {
         }
 
     }
+    
+    public Entity getNewEnemyFish( List<Entity> gameObjects, int size) {
+        Random random = new Random();
+
+        int eatableNumbers = 0;
+        for (Entity gameObject : gameObjects) {
+            if (gameObject instanceof EnemyFish && ((EnemyFish) gameObject).getSize() < size) {
+                eatableNumbers++;
+            }
+        }
+
+        EnemyFish enemyFish;
+        if (eatableNumbers >= 2) {
+            enemyFish = new EnemyFish(random.nextInt(size + 1));
+        } else {
+            enemyFish = new EnemyFish(random.nextInt(size));
+        }
+
+        if (random.nextBoolean()) {
+            enemyFish.setPositon(-enemyFish.getWidth(), random.nextInt(GamePanel.RESOLUTION.height) + 10);
+            enemyFish.setDirection(Direction.RIGHT);
+        } else {
+            enemyFish.setPositon(GamePanel.RESOLUTION.width + enemyFish.getWidth(),
+                    random.nextInt(GamePanel.RESOLUTION.height) + 10);
+            enemyFish.setDirection(Direction.LEFT);
+        }
+
+        return enemyFish;
+    }
+
 
 }
