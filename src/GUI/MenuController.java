@@ -7,8 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class MenuController {
 
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
+
+public class MenuController extends VBox{
+	
 	@FXML
 	public Button playGameButton;
 

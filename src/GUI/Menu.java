@@ -19,7 +19,7 @@ public class Menu extends Application{
 	public static AudioClip backgroundMusic;
 	public void start(Stage primaryStage) throws Exception {
 		// TODO
-		
+
 		backgroundMusic = new AudioClip(getClass().getResource(bgm).toExternalForm());
 		backgroundMusic.setCycleCount(AudioClip.INDEFINITE);
 		backgroundMusic.play();
