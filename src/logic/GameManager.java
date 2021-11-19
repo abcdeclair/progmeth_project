@@ -8,22 +8,15 @@ import entity.PlayerFish;
 import entity.base.Entity;
 
 public class GameManager {
-	private static final long REFRESH_INTERVAL_MS = 25;
-	private long startTime;
 	private boolean isGameRunning = false;
 	private boolean isGamePaused = false;
 	private boolean isGameOver = false;
-	private boolean isInLevelTransition = false;
-	private boolean readyForSpecialFish = false;
-	private boolean shouldAddBubble = false;
-	private GamePanel gamePanel;
+	private boolean isGameWin = false;
 	private GameMapManager gameMapManager;
-	private Thread gameThread;
 	private List<Entity> gameObjects = new ArrayList<>();
 	private PlayerFish playerFish;
 	
-	public GameManager(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
+	public GameManager() {
         gameMapManager = new GameMapManager();
     }
 	
@@ -36,29 +29,15 @@ public class GameManager {
         gameObjects.clear();
         gameObjects.addAll(gameMapManager.getMapObjects());
 
-        if (playerFish == null) {
-            playerFish = new PlayerFish();
-        } else if (isInLevelTransition) {
-            playerFish.resetForNewLevel();
-            isInLevelTransition = false;
-        } else {
-            playerFish.reset();
-        }
+        playerFish = new PlayerFish();
 
-        this.gamePanel.setLevel(playerFish, gameObjects, gameMapManager.getLevel());
     }
 	
 	public void startGame( boolean isNewGame) {
         if (isNewGame) {
             playerFish = new PlayerFish();
-            gameMapManager.setLevel(0);
         }
         initialize();
-        if (gameThread != null && gameThread.isAlive()) {
-            gameThread.interrupt();
-        }
-        gameThread = new Thread(new GameLoop());
-        gameThread.start();
     }
 	
 	public void stopGame() {
@@ -88,5 +67,9 @@ public class GameManager {
 	
 	public boolean isGameRunning() {
         return isGameRunning;
+    }
+	
+	public boolean isGameWin() {
+        return isGameWin;
     }
 }

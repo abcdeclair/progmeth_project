@@ -2,9 +2,6 @@ package entity;
 
 import java.util.Random;
 
-import entity.base.GameManager;
-import entity.base.GameMapManager;
-import entity.base.PlayerFish;
 import logic.Direction;
 
 public class EnemyFish extends Fish {
@@ -16,12 +13,12 @@ public class EnemyFish extends Fish {
 		direction = Direction.LEFT;
 	}
 	
-	public EnemyFish(int size, Point position) {
+	public EnemyFish(int size, int x, int y) {
         this(size);
-        this.x = position.x;
-        this.y = position.y;
+        this.x = x;
+        this.y = y;
     }
-
+ 
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
@@ -40,13 +37,13 @@ public class EnemyFish extends Fish {
             }
         }
 
-        if (x > GamePanel.RESOLUTION.width) {
+        if (x > 1400) {
             x = -width;
         }
         if (x + width < 0) {
-            x = GamePanel.RESOLUTION.width;
+            x = 1400;
         } else {
-            if (y > GamePanel.RESOLUTION.height || y + height < 0) {
+            if (y > 800 || y + height < 0) {
                 setMarkedForDestroying(true);
             }
         }
@@ -62,17 +59,4 @@ public class EnemyFish extends Fish {
         this.size = size;
     }
 
-	@Override
-	public void updateState(GameManager gameManager, GameMapManager gameMapManager, PlayerFish playerFish) {
-		// TODO Auto-generated method stub
-		if (size < playerFish.getSize() || playerFish.getFrenzy() == 100) {
-            playerFish.setGrowth(playerFish.getGrowth() + (size + 1) * 5);
-            playerFish.setFrenzy(playerFish.getFrenzy() + (size + 1) * 2);
-            playerFish.setScore(playerFish.getScore() + (size + 1) * 5);
-            setMarkedForDestroying(true);
-        } else {
-            playerFish.setLives(playerFish.getLives() - 1);
-            playerFish.setFrenzy(0);
-        }
-	}
 }
