@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MenuController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/bg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/playgamebutton.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="playgameButton" mnemonicParsing="false" onAction="#PlaygameClick" opacity="0.0" prefHeight="78.0" prefWidth="202.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/settingbutton.png" />
+         </image>
+         <StackPane.margin>
+            <Insets top="200.0" />
+         </StackPane.margin>
+      </ImageView>
+      <Button fx:id="settingButton" mnemonicParsing="false" onAction="#SettingClick" opacity="0.0" prefHeight="83.0" prefWidth="210.0" scaleShape="false">
+         <StackPane.margin>
+            <Insets top="200.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/creditbutton.png" />
+         </image>
+         <StackPane.margin>
+            <Insets top="400.0" />
+         </StackPane.margin>
+      </ImageView>
+      <Button fx:id="creditButton" mnemonicParsing="false" onAction="#CreditClick" opacity="0.0" prefHeight="77.0" prefWidth="202.0">
+         <StackPane.margin>
+            <Insets top="400.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/exitbutton.png" />
+         </image>
+         <StackPane.margin>
+            <Insets top="600.0" />
+         </StackPane.margin>
+      </ImageView>
+      <Button fx:id="exitButton" mnemonicParsing="false" onAction="#ExitClick" opacity="0.0" prefHeight="77.0" prefWidth="206.0">
+         <StackPane.margin>
+            <Insets top="600.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</StackPane>

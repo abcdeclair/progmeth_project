@@ -1,8 +1,8 @@
 package entity;
 import entity.base.Entity;
 import logic.Direction;
-
-public class PlayerFish extends Entity{
+import entity.base.Consumable;
+public class PlayerFish extends Entity implements Consumable{
 	private int score = 0;
     private int size = 1;
     private int growth = 0;
@@ -58,11 +58,26 @@ public class PlayerFish extends Entity{
             this.size++;
         }
     }
+    
+   
 
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean consume(Entity e) {
+		// TODO Auto-generated method stub
+		if (e instanceof EnemyFish) {
+			EnemyFish i = (EnemyFish)e;
+			if (i.getSize() < getSize()) {
+				e.isMarkedForDestroying();
+				return true;
+			}
+		}
+		return false;
 	}
 
 

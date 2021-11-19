@@ -34,7 +34,7 @@ public class GameMapManager {
         initialNumberOfFish += 2;
 
         List<Entity> initialGameObjects = new ArrayList<>();
-        int spaceBetweenFish = GamePanel.RESOLUTION.height / (initialNumberOfFish + 1);
+        int spaceBetweenFish = 800 / (initialNumberOfFish + 1);
 
         switch (level) {
         case 1:
@@ -45,7 +45,7 @@ public class GameMapManager {
                     enemyFish.setPositon(-enemyFish.getWidth(), (i + 1) * spaceBetweenFish);
                     enemyFish.setDirection(Direction.RIGHT);
                 } else {
-                    enemyFish.setPositon(GamePanel.RESOLUTION.width + enemyFish.getWidth(), i * spaceBetweenFish + 10);
+                    enemyFish.setPositon(1400 + enemyFish.getWidth(), i * spaceBetweenFish + 10);
                     enemyFish.setDirection(Direction.LEFT);
                 }
                 initialGameObjects.add(enemyFish);
@@ -59,7 +59,7 @@ public class GameMapManager {
                     enemyFish.setPositon(-enemyFish.getWidth(), (i + 1) * spaceBetweenFish);
                     enemyFish.setDirection(Direction.RIGHT);
                 } else {
-                    enemyFish.setPositon(GamePanel.RESOLUTION.width + enemyFish.getWidth(), i * spaceBetweenFish + 10);
+                    enemyFish.setPositon(1400 + enemyFish.getWidth(), i * spaceBetweenFish + 10);
                     enemyFish.setDirection(Direction.LEFT);
                 }
                 initialGameObjects.add(enemyFish);
@@ -73,7 +73,7 @@ public class GameMapManager {
                     enemyFish.setPositon(-enemyFish.getWidth(), (i + 1) * spaceBetweenFish);
                     enemyFish.setDirection(Direction.RIGHT);
                 } else {
-                    enemyFish.setPositon(GamePanel.RESOLUTION.width + enemyFish.getWidth(), i * spaceBetweenFish + 10);
+                    enemyFish.setPositon(1400 + enemyFish.getWidth(), i * spaceBetweenFish + 10);
                     enemyFish.setDirection(Direction.LEFT);
                 }
                 initialGameObjects.add(enemyFish);
@@ -103,11 +103,11 @@ public class GameMapManager {
         }
 
         if (random.nextBoolean()) {
-            enemyFish.setPositon(-enemyFish.getWidth(), random.nextInt(GamePanel.RESOLUTION.height) + 10);
+            enemyFish.setPositon(-enemyFish.getWidth(), random.nextInt(800) + 10);
             enemyFish.setDirection(Direction.RIGHT);
         } else {
-            enemyFish.setPositon(GamePanel.RESOLUTION.width + enemyFish.getWidth(),
-                    random.nextInt(GamePanel.RESOLUTION.height) + 10);
+            enemyFish.setPositon(1400 + enemyFish.getWidth(),
+                    random.nextInt(800) + 10);
             enemyFish.setDirection(Direction.LEFT);
         }
 
