@@ -1,6 +1,8 @@
 package GUI;
 
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -37,7 +39,8 @@ public class MenuController extends VBox{
 	public Button exitButton;
 
 	@FXML
-	public void ExitClick() {
+	public void ExitClick(ActionEvent event) {
+		Platform.exit();
 
 	}
 

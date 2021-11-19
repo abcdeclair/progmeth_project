@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+   <children>
+      <ImageView fitHeight="495.0" fitWidth="671.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/settingtask.png" />
+         </image>
+      </ImageView>
+      <CheckBox fx:id="musicCheckBox" mnemonicParsing="false" opacity="0.0" prefHeight="76.0" prefWidth="74.0">
+         <StackPane.margin>
+            <Insets left="200.0" top="-50.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CheckBox>
+      <CheckBox fx:id="soundCheckBox" mnemonicParsing="false" opacity="0.0" prefHeight="72.0" prefWidth="74.0">
+         <StackPane.margin>
+            <Insets left="200.0" top="138.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CheckBox>
+      <Button fx:id="backToMainButton" mnemonicParsing="false" onAction="#backToMainMenu" opacity="0.0" prefHeight="58.0" prefWidth="178.0">
+         <StackPane.margin>
+            <Insets top="306.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</StackPane>
