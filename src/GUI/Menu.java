@@ -15,8 +15,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
-public class Menu extends Application {
-
+public class Menu extends Application{
 	
 	public static final String bgm = "/originalsoundtrack.mp3";
 	public static AudioClip backgroundMusic;
