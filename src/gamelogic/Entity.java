@@ -1,21 +1,39 @@
-package entity.base;
+package gamelogic;
 
 import java.awt.Rectangle;
 
+import MainGame.IRenderable;
 import logic.Direction;
 
-public abstract class Entity {
+public abstract class Entity implements IRenderable{
 	protected int x;
 	protected int y;
+	protected int z;
 	protected int width;
 	protected int height;
 	protected Direction direction;
 	protected boolean isControlledByAi;
 	protected boolean isDestroied;
+	private boolean isDestroyed;
+	private boolean isVisible;
 
 	public Entity() {
 		isControlledByAi = false;
 		isDestroied = false;
+		isVisible = true;
+		z = 0;
+	}
+
+	public void setZ(int z) {
+		this.z = z;
+	}
+
+	public void setDestroyed(boolean isDestroyed) {
+		this.isDestroyed = isDestroyed;
+	}
+
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
 	}
 
 	public Rectangle getBoundingBox() {
@@ -80,6 +98,7 @@ public abstract class Entity {
     }
     
     public boolean isMarkedForDestroying() {
+    	isVisible = false;
         return isDestroied;
     }
 
@@ -87,5 +106,19 @@ public abstract class Entity {
         this.isDestroied = isMarkedForDestroying;
     }
 
+    @Override
+	public boolean isDestroyed(){
+		return isDestroyed;
+	}
+	
+	@Override
+	public boolean isVisible(){
+		return isVisible;
+	}
+	
+	@Override
+	public int getZ(){
+		return z;
+	}
 
 }

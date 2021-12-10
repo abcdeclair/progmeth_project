@@ -1,7 +1,8 @@
-package entity;
+package gamelogic;
 
 import java.util.Random;
 
+import javafx.scene.canvas.GraphicsContext;
 import logic.Direction;
 
 public class EnemyFish extends Fish {
@@ -58,5 +59,11 @@ public class EnemyFish extends Fish {
     public void setSize( int size) {
         this.size = size;
     }
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		gc.drawImage(MainGame.RenderableHolder.enemyFishSprite, x, y);
+	}
 
 }

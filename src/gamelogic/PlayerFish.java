@@ -1,7 +1,9 @@
-package entity;
-import entity.base.Entity;
+package gamelogic;
+
+import input.InputUtility;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import logic.Direction;
-import entity.base.Consumable;
 public class PlayerFish extends Entity implements Consumable{
 	private int score = 0;
     private int size = 1;
@@ -64,6 +66,17 @@ public class PlayerFish extends Entity implements Consumable{
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
+		if (InputUtility.getKeyPressed(KeyCode.W)) {
+			y -= 5;
+		}
+		else if (InputUtility.getKeyPressed(KeyCode.S)) {
+			y += 5;
+		}
+		else if (InputUtility.getKeyPressed(KeyCode.A)) {
+			x -= 5;
+		} else if (InputUtility.getKeyPressed(KeyCode.D)) {
+			x += 5;
+		}
 		
 	}
 
@@ -79,6 +92,14 @@ public class PlayerFish extends Entity implements Consumable{
 		}
 		return false;
 	}
+
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		gc.drawImage(MainGame.RenderableHolder.enemyFishSprite, x, y);
+	}
+
 
 
 }

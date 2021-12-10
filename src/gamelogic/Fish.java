@@ -1,6 +1,5 @@
-package entity;
+package gamelogic;
 
-import entity.base.Entity;
 
 public abstract class Fish extends Entity {
 
