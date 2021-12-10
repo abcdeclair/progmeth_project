@@ -21,6 +21,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MenuController extends VBox implements Initializable {
 
@@ -51,6 +52,7 @@ public class MenuController extends VBox implements Initializable {
 		SettingController settingControl = loader.getController();
 		Scene scene = new Scene(root);
 		Stage app_stage = new Stage();
+		app_stage.initStyle(StageStyle.UNDECORATED);
 		app_stage.setScene(scene);
 		app_stage.setResizable(false);
 		app_stage.show();
