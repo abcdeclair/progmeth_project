@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 
-<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="GUI.SettingController">
    <children>
       <ImageView fitHeight="495.0" fitWidth="671.0" pickOnBounds="true" preserveRatio="true">
          <image>
