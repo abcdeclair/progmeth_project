@@ -50,6 +50,7 @@ public class MenuController extends VBox implements Initializable {
 		((Node)(event.getSource())).getScene().getWindow().hide();
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		app_stage.setScene(scene);
+		Menu.backgroundMusic.stop();
 
 		GameLogic logic = new GameLogic();
 		GameScreen gameScreen = new GameScreen(1400, 800);

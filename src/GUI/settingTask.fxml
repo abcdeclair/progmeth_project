@@ -15,29 +15,48 @@
             <Image url="@../../res/settingtask.png" />
          </image>
       </ImageView>
-      <CheckBox fx:id="musicCheckBox" mnemonicParsing="false" opacity="0.0" prefHeight="76.0" prefWidth="74.0">
+      <CheckBox fx:id="musicCheckBox" mnemonicParsing="false" onAction="#musicCheckClick" opacity="0.0" prefHeight="61.0" prefWidth="58.0">
          <StackPane.margin>
-            <Insets left="200.0" top="-50.0" />
+            <Insets left="165.0" top="-40.0" />
          </StackPane.margin>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
-      <CheckBox fx:id="soundCheckBox" mnemonicParsing="false" opacity="0.0" prefHeight="72.0" prefWidth="74.0">
+      <CheckBox fx:id="soundCheckBox" mnemonicParsing="false" opacity="0.0" prefHeight="62.0" prefWidth="61.0" selected="true">
          <StackPane.margin>
-            <Insets left="200.0" top="138.0" />
+            <Insets left="165.0" top="115.0" />
          </StackPane.margin>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
-      <Button fx:id="backToMainButton" mnemonicParsing="false" onAction="#backToMainMenu" opacity="0.0" prefHeight="58.0" prefWidth="178.0">
+      <Button fx:id="backToMainButton" mnemonicParsing="false" onAction="#backToMainMenu" opacity="0.0" prefHeight="50.0" prefWidth="150.0">
          <StackPane.margin>
-            <Insets top="306.0" />
+            <Insets top="250.0" />
          </StackPane.margin>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fx:id="checkMusic" disable="true" fitHeight="63.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/check.png" />
+         </image>
+         <StackPane.margin>
+            <Insets left="165.0" top="-40.0" />
+         </StackPane.margin>
+      </ImageView>
+      <ImageView fx:id="checkSound" disable="true" fitHeight="63.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/check.png" />
+         </image>
+         <StackPane.margin>
+            <Insets left="165.0" top="115.0" />
+         </StackPane.margin>
+      </ImageView>
    </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </StackPane>
