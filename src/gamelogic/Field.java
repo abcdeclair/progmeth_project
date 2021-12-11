@@ -33,13 +33,14 @@ public class Field implements IRenderable {
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		for (int x = 0; x <= field[0].length; x++) {
-			for (int y = 0; y <= field.length; y++) {
-				WritableImage croppedImage = new WritableImage(RenderableHolder.mapSprite.getPixelReader(),
-						getTileIndex(x, y) * 64, 0, 64, 64);
-				gc.drawImage(croppedImage, x * 64, y * 64);
-			}
-		}
+//		for (int x = 0; x <= field[0].length; x++) {
+//			for (int y = 0; y <= field.length; y++) {
+//				WritableImage croppedImage = new WritableImage(RenderableHolder.mapSprite.getPixelReader(),
+//						getTileIndex(x, y) * 64, 0, 64, 64);
+//				gc.drawImage(croppedImage, x * 64, y * 64);
+//			}
+//		}
+		gc.drawImage(MainGame.RenderableHolder.mapSprite, 0, 0, 1400, 800);
 	}
 
 	@Override

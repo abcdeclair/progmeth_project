@@ -99,6 +99,7 @@ public abstract class Entity implements IRenderable{
     
     public boolean isMarkedForDestroying() {
     	isVisible = false;
+    	isDestroied = true;
         return isDestroied;
     }
 

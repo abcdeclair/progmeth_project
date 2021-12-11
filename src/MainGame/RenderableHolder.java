@@ -17,7 +17,10 @@ public class RenderableHolder {
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	public static Image mapSprite;
-	public static Image enemyFishSprite;
+	public static Image enemyFish1Sprite;
+	public static Image enemyFish2Sprite;
+	public static Image itemsSprite;
+	public static Image playerSprite;
 	public static AudioClip  eatingSound;
 
 	static {
@@ -39,7 +42,10 @@ public class RenderableHolder {
 
 	public static void loadResource() {
 		mapSprite = new Image(ClassLoader.getSystemResource("bg.png").toString());
-		enemyFishSprite = new Image(ClassLoader.getSystemResource("enemy_fish.png").toString());
+		enemyFish1Sprite = new Image(ClassLoader.getSystemResource("enemyfish1.png").toString());
+		enemyFish2Sprite = new Image(ClassLoader.getSystemResource("enemyfish2.png").toString());
+		playerSprite = new Image(ClassLoader.getSystemResource("player.png").toString());
+		itemsSprite = new Image(ClassLoader.getSystemResource("items.png").toString());
 		//eatingSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
 	}
 
