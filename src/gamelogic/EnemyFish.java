@@ -4,10 +4,10 @@ import java.util.Random;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
+
 import logic.Direction;
 
-public class EnemyFish extends Fish {
+public class EnemyFish extends Fish implements Consumable {
 
 	private int size;
 
@@ -64,7 +64,7 @@ public class EnemyFish extends Fish {
 
 	public void beEated(PlayerFish player) {
 		// player.hitByMine();
-		// RenderableHolder.explosionSound.play();
+		MainGame.RenderableHolder.eatingSound.play();
 		this.isMarkedForDestroying();
 	}
 
@@ -82,17 +82,43 @@ public class EnemyFish extends Fish {
 		if (getSize() == 1) {
 			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.enemyFish1Sprite.getPixelReader(),
 					1, 1, 60, 45);
-			gc.drawImage(croppedImage, x, y, width, height);
+			if (direction == Direction.RIGHT) {
+				
+				gc.drawImage(croppedImage, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), x+width, y,-getWidth(), getHeight());
+			}
+			else {
+				gc.drawImage(croppedImage, x, y, width, height);
+			}
 		}
 		else if(getSize() == 2) {
 			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.enemyFish2Sprite.getPixelReader(),
 					1, 1, 180, 170);
-			gc.drawImage(croppedImage, x, y, width, height);
+			if (direction == Direction.RIGHT) {
+				
+				gc.drawImage(croppedImage, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), x+width, y,-getWidth(), getHeight());
+			}
+			else {
+				gc.drawImage(croppedImage, x, y, width, height);
+			}
 		}
 
 //		gc.setLineWidth(2.0);
 //		gc.setFill(Color.GREEN);
 //		gc.fillRoundRect(getX(), getY(), getWidth(), getHeight(), 10,10);
+	}
+
+	@Override
+	public boolean consume(Entity e) {
+		// TODO Auto-generated method stub
+		if (!e.isDestroied && e instanceof PlayerFish && x <= e.x+e.width && x+width>=e.x && y <= e.y+e.height && y+height >= e.y) {
+			PlayerFish i = (PlayerFish) e;
+			if (i.getSize() < getSize()) {
+				e.isMarkedForDestroying();
+				//MainGame.RenderableHolder.eatingSound.play();
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

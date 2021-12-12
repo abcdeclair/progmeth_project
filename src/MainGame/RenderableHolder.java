@@ -46,7 +46,7 @@ public class RenderableHolder {
 		enemyFish2Sprite = new Image(ClassLoader.getSystemResource("enemyfish2.png").toString());
 		playerSprite = new Image(ClassLoader.getSystemResource("player.png").toString());
 		itemsSprite = new Image(ClassLoader.getSystemResource("items.png").toString());
-		//eatingSound = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
+		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());
 	}
 
 	public void add(IRenderable entity) {
