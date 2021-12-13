@@ -7,9 +7,9 @@ import javafx.scene.image.WritableImage;
 
 public class Items extends Entity{
 	
-	int type;
-	int posX;
-	int posY;
+	protected int type;
+	protected int posX;
+	protected int posY;
 	
 	public Items(int type, int x) {
 		this.type = type;
@@ -28,6 +28,14 @@ public class Items extends Entity{
 		else if (type == 3) {
 			posX = 1;
 			posY = 75;
+		}
+		else if (type == 4) {
+			posX = 1;
+			posY = 272;
+		}
+		else if (type == 5) {
+			posX = 1;
+			posY = 313;
 		}
 	}
 	

@@ -16,6 +16,8 @@ public abstract class Entity implements IRenderable{
 	protected boolean isDestroied;
 	private boolean isDestroyed;
 	private boolean isVisible;
+	private int animetionPosX = 1;
+	private int animetiontimer = 0;
 
 	public Entity() {
 		isControlledByAi = false;
@@ -28,9 +30,6 @@ public abstract class Entity implements IRenderable{
 		this.z = z;
 	}
 
-	public void setDestroyed(boolean isDestroyed) {
-		this.isDestroyed = isDestroyed;
-	}
 
 	public void setVisible(boolean isVisible) {
 		this.isVisible = isVisible;
@@ -105,7 +104,24 @@ public abstract class Entity implements IRenderable{
 
     public void setMarkedForDestroying( boolean isMarkedForDestroying) {
         this.isDestroied = isMarkedForDestroying;
+        this.isVisible = !isMarkedForDestroying;
     }
+    
+    public int getAnimetionPosX() {
+		return animetionPosX;
+	}
+
+	public void setAnimetionPosX(int animetionPosX) {
+		this.animetionPosX = animetionPosX;
+	}
+
+	public int getAnimetiontimer() {
+		return animetiontimer;
+	}
+
+	public void setAnimetiontimer(int animetiontimer) {
+		this.animetiontimer = animetiontimer;
+	}
 
     @Override
 	public boolean isDestroyed(){

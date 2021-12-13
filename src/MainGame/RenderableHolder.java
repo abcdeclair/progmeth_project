@@ -19,6 +19,7 @@ public class RenderableHolder {
 	public static Image mapSprite;
 	public static Image enemyFish1Sprite;
 	public static Image enemyFish2Sprite;
+	public static Image enemyFish3Sprite;
 	public static Image itemsSprite;
 	public static Image playerSprite;
 	public static AudioClip  eatingSound;
@@ -44,6 +45,7 @@ public class RenderableHolder {
 		mapSprite = new Image(ClassLoader.getSystemResource("bg.png").toString());
 		enemyFish1Sprite = new Image(ClassLoader.getSystemResource("enemyfish1.png").toString());
 		enemyFish2Sprite = new Image(ClassLoader.getSystemResource("enemyfish2.png").toString());
+		enemyFish3Sprite = new Image(ClassLoader.getSystemResource("enemyfish3.png").toString());
 		playerSprite = new Image(ClassLoader.getSystemResource("player.png").toString());
 		itemsSprite = new Image(ClassLoader.getSystemResource("items.png").toString());
 		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());

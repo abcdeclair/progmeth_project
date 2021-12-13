@@ -34,9 +34,10 @@ public class InGame extends Application {
 		retrybtn.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				logic.newGame();
+			public void handle(ActionEvent event) {
+			
+				
+				logic.level1();		/// eclair help!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				retrybtn.setVisible(false);
 			}
 		});

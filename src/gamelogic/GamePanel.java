@@ -19,14 +19,19 @@ public class GamePanel implements IRenderable{
 	public void update(int score, int growth, int size) {
 		if (size == 1) {
 			prog = 0;
+			prog += growth;
 		}
 		else if (size == 2) {
 			prog = 100;
+			prog += growth;
 		}
 		else if (size == 3) {
 			prog = 200;
+			prog += growth;
 		}
-		prog += growth;
+		else {
+			prog = 300;
+		}
 		this.score = score;
 	}
 	@Override
@@ -43,6 +48,7 @@ public class GamePanel implements IRenderable{
 		gc.setFill(Color.WHITE);
 		gc.setFont(Font.font("Times New Roman", FontWeight.LIGHT,20));
 		gc.fillText(String.valueOf(score), 50, 30);
+		
 	}
 	@Override
 	public boolean isDestroyed() {

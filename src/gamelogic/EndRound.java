@@ -37,7 +37,7 @@ public class EndRound implements IRenderable{
 		// TODO Auto-generated method stub
 		gc.setFill(Color.WHITE);
 		gc.setFont(Font.font("Times New Roman", FontWeight.BOLD, 60));
-		gc.fillText(endingText, 500, 700);
+		gc.fillText(endingText, 650, 350);
 	}
 
 	@Override
