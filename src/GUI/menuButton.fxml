@@ -41,13 +41,13 @@
          </cursor></Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../res/creditbutton.png" />
+            <Image url="@../../res/howtoplay.png" />
          </image>
          <StackPane.margin>
             <Insets top="400.0" />
          </StackPane.margin>
       </ImageView>
-      <Button fx:id="creditButton" mnemonicParsing="false" onAction="#CreditClick" opacity="0.0" prefHeight="77.0" prefWidth="202.0">
+      <Button fx:id="howtoplayButton" mnemonicParsing="false" onAction="#HowtoPlayClick" opacity="0.0" prefHeight="77.0" prefWidth="202.0">
          <StackPane.margin>
             <Insets top="400.0" />
          </StackPane.margin>

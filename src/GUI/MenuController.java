@@ -91,10 +91,10 @@ public class MenuController extends VBox implements Initializable {
 	}
 
 	@FXML
-	public Button creditButton;
+	public Button howtoplayButton;
 
 	@FXML
-	public void CreditClick() {
+	public void HowtoPlayClick() {
 
 	}
 
