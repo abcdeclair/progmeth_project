@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class InGame extends Application {
 	private static Button retrybtn;
@@ -37,7 +38,7 @@ public class InGame extends Application {
 			public void handle(ActionEvent event) {
 			
 				
-				logic.level1();		/// eclair help!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				logic.newGame();		/// eclair help!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				retrybtn.setVisible(false);
 			}
 		});
@@ -57,6 +58,24 @@ public class InGame extends Application {
 			}
 		};
 		animation.start();
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		       @Override
+		       public void handle(WindowEvent e) {
+		          try {
+					stop();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		          System.exit(0);
+		       }
+		    });
+	}
+	
+	@Override
+	public void stop() throws Exception {
+	    super.stop(); //To change body of generated methods, choose Tools | Templates.
+	    System.exit(0);
 	}
 
 	public static Button getRetrybtn() {

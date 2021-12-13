@@ -28,6 +28,10 @@ public class GameLogic {
 		gameObjectContainer.add(entity);
 		RenderableHolder.getInstance().add(entity);
 	}
+	
+	public void killThead(Thread t) {
+		
+	}
 
 	public void logicUpdate() {
 		player.update(gamePanel);
@@ -68,6 +72,7 @@ public class GameLogic {
 		}
 		if (isLose) {
 			endingSene.show("Lose");
+			//newGame();
 			InGame.getRetrybtn().setVisible(true);
 		}
 		if (isWin) {
@@ -84,32 +89,34 @@ public class GameLogic {
 //		gamePanel.reset();
 		endingSene.unshow();
 		RenderableHolder.getInstance().getEntities().clear();
+		gameObjectContainer = new ArrayList<Entity>();
+		level1();
 //		for (int in = gameObjectContainer.size() - 1; in >= 0; in--) {
 //			Entity e = gameObjectContainer.get(in);
 //			e.isMarkedForDestroying();
 //		}
-		player.setMarkedForDestroying(false);
-		Random random = new Random();
-		Field field = new Field();
-		RenderableHolder.getInstance().add(field);
-		gamePanel = new GamePanel();
-		RenderableHolder.getInstance().add(gamePanel);
-		endingSene = new EndRound();
-		RenderableHolder.getInstance().add(endingSene);
-		isLose = false;
-		isWin = false;
-		Items item = new Items(1, random.nextInt(1400));
-		for (int i = 0; i < 50; i++) {
-			EnemyFish enemyfish = new EnemyFish(random.nextInt(3), random.nextInt(1400), random.nextInt(800));
-			if (random.nextBoolean()) {
-				enemyfish.direction = Direction.LEFT;
-			} else {
-				enemyfish.direction = Direction.RIGHT;
-			}
-			addNewObject(enemyfish);
-		}
-		addNewObject(item);
-		addNewObject(player);
+//		player.setMarkedForDestroying(false);
+//		Random random = new Random();
+//		Field field = new Field();
+//		RenderableHolder.getInstance().add(field);
+//		gamePanel = new GamePanel();
+//		RenderableHolder.getInstance().add(gamePanel);
+//		endingSene = new EndRound();
+//		RenderableHolder.getInstance().add(endingSene);
+//		isLose = false;
+//		isWin = false;
+//		Items item = new Items(1, random.nextInt(1400));
+//		for (int i = 0; i < 50; i++) {
+//			EnemyFish enemyfish = new EnemyFish(random.nextInt(3), random.nextInt(1400), random.nextInt(800));
+//			if (random.nextBoolean()) {
+//				enemyfish.direction = Direction.LEFT;
+//			} else {
+//				enemyfish.direction = Direction.RIGHT;
+//			}
+//			addNewObject(enemyfish);
+//		}
+//		addNewObject(item);
+//		addNewObject(player);
 	}
 
 	public void level1() {
@@ -129,10 +136,10 @@ public class GameLogic {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
-				Items item = new Items(2, random.nextInt(1400));
+				Items item = new Items((int)random.nextInt(6), random.nextInt(1400));
 				addNewObject(item);
 			}
-		}, 3000, 5000);
+		}, 15000, 15000);
 		for (int i = 0; i < 10; i++) {
 			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(800));
 			if (random.nextBoolean()) {
