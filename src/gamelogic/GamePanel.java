@@ -16,6 +16,7 @@ public class GamePanel implements IRenderable{
 	private int prog;
 	private int score;
 	private List<Items> status;
+	private boolean isDestroyed = false;
 	
 	public GamePanel() {
 		prog = 0;
@@ -77,7 +78,10 @@ public class GamePanel implements IRenderable{
 	@Override
 	public boolean isDestroyed() {
 		// TODO Auto-generated method stub
-		return false;
+		return isDestroyed;
+	}
+	public void setDestroyed() {
+		this.isDestroyed = true;
 	}
 	@Override
 	public boolean isVisible() {

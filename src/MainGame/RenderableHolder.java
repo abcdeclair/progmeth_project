@@ -86,7 +86,9 @@ public class RenderableHolder {
 			if (x instanceof EndRound) {
 				((EndRound) x).setDestroyed();
 			}
-			
+			if (x instanceof GamePanel) {
+				((GamePanel) x).setDestroyed();
+			}
 		}
 	}
 

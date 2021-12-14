@@ -45,7 +45,6 @@ public class GameLogic {
         isWin = false;
         MainGame.RenderableHolder.getInstance().reset();
         gameObjectContainer.clear();
-        settingLevel();
         
         if (player == null) {
             player = new PlayerFish();
