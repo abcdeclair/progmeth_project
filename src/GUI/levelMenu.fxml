@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LevelMenuController">
+   <children>
+      <ImageView fitHeight="453.0" fitWidth="641.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/levelmenu.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="playGameButton" mnemonicParsing="false" onAction="#playGameClick" opacity="0.0" prefHeight="60.0" prefWidth="175.0">
+         <StackPane.margin>
+            <Insets top="310.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fx:id="level1Pic" fitHeight="62.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/levelUnlocked.png" />
+         </image>
+         <StackPane.margin>
+            <Insets right="325.0" />
+         </StackPane.margin>
+      </ImageView>
+      <ImageView fx:id="level2Pic" fitHeight="62.0" fitWidth="64.0" layoutX="136.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/levelUnlocked.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="level3Pic" fitHeight="62.0" fitWidth="64.0" layoutX="299.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/levelUnlocked.png" />
+         </image>
+         <StackPane.margin>
+            <Insets left="325.0" />
+         </StackPane.margin>
+      </ImageView>
+      <CheckBox fx:id="level2CheckBox" disable="true" mnemonicParsing="false" onAction="#level2Check" opacity="0.0" prefHeight="58.0" prefWidth="62.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></CheckBox>
+      <CheckBox fx:id="level3CheckBox" disable="true" layoutX="300.0" layoutY="208.0" mnemonicParsing="false" onAction="#level3Check" opacity="0.0" prefHeight="58.0" prefWidth="62.0">
+         <StackPane.margin>
+            <Insets left="325.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CheckBox>
+      <CheckBox fx:id="level1CheckBox" disable="true" layoutX="462.0" layoutY="208.0" mnemonicParsing="false" onAction="#level1Check" opacity="0.0" prefHeight="58.0" prefWidth="62.0">
+         <StackPane.margin>
+            <Insets right="325.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </CheckBox>
+   </children>
+</StackPane>

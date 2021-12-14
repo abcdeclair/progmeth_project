@@ -4,6 +4,7 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -31,51 +32,29 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 public class MenuController extends VBox implements Initializable {
-	
 
 	@FXML
 	public Button playgameButton;
 
 	@FXML
 	private void PlaygameClick(ActionEvent event) throws IOException {
+
 		MainGame.RenderableHolder.clickSound.play();
-//		clickSound.setVolume(0.15);
+//		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("levelMenu.fxml"));
+		Parent root = loader.load();
 
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource("settingTask.fxml"));
-//		Parent root = loader.load();
-//		Scene scene = new Scene(root);
-//		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//		app_stage.setScene(scene);
-//		app_stage.show();
-		StackPane root = new StackPane();
+
 		Scene scene = new Scene(root);
-//		stage.setScene(scene);
-//		stage.setTitle("Fish game");
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		Stage app_stage = new Stage();
+		app_stage.initStyle(StageStyle.UNDECORATED);
 		app_stage.setScene(scene);
-		Menu.backgroundMusic.stop();
-
-		GameLogic logic = new GameLogic();
-		GameScreen gameScreen = new GameScreen(1400, 800);
-		root.getChildren().add(gameScreen);
-		gameScreen.requestFocus();
-
+		app_stage.setResizable(false);
 		app_stage.show();
-
-		AnimationTimer animation = new AnimationTimer() {
-			public void handle(long now) {
-				gameScreen.paintComponent();
-				logic.logicUpdate();
-				RenderableHolder.getInstance().update();
-				InputUtility.updateInputState();
-			}
-		};
-		animation.start();
-
 	}
 
 	@FXML
@@ -83,9 +62,7 @@ public class MenuController extends VBox implements Initializable {
 
 	@FXML
 	private void SettingClick(ActionEvent event) throws IOException {
-		
-		
-		
+
 		MainGame.RenderableHolder.clickSound.play();
 //		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("settingTask.fxml"));
@@ -106,14 +83,16 @@ public class MenuController extends VBox implements Initializable {
 
 	@FXML
 	public void HowtoPlayClick(ActionEvent event) throws IOException {
-		
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage1.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
-		((Node) (event.getSource())).getScene().getWindow().hide();
+
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 		app_stage.setScene(scene);
 		app_stage.show();
+
 
 	}
 

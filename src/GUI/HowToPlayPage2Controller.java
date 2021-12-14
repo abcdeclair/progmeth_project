@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class HowToPlayPage2Controller extends StackPane {
 	
 	@FXML
-	public Button homeButton;
+	private Button homeButton;
 	
 	@FXML
 	private void homeClick(ActionEvent event) throws IOException {
@@ -23,15 +23,16 @@ public class HowToPlayPage2Controller extends StackPane {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
-		((Node) (event.getSource())).getScene().getWindow().hide();
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 		app_stage.setScene(scene);
 		app_stage.show();
+		
 		
 	}
 	
 	@FXML
-	public Button backButton;
+	private Button backButton;
 	
 	@FXML
 	private void backClick(ActionEvent event) throws IOException {
@@ -39,10 +40,11 @@ public class HowToPlayPage2Controller extends StackPane {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage1.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
-		((Node) (event.getSource())).getScene().getWindow().hide();
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 		app_stage.setScene(scene);
 		app_stage.show();
+		
 		
 	}
 

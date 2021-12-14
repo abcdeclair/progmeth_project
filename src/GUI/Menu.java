@@ -20,10 +20,19 @@ public class Menu extends Application{
 	public static final String bgm = "/originalsoundtrack.mp3";
 	public static AudioClip backgroundMusic;
 	public static boolean played = true;
+	private static int currentLevel = 1;
+
+	public static int getCurrentLevel() {
+		return currentLevel;
+	}
+
+	public static void setCurrentLevel(int currentLevel) {
+		Menu.currentLevel = currentLevel;
+	}
 
 	public void start(Stage primaryStage) throws Exception {
 		// TODO
-		
+		setCurrentLevel(2);
 
 		backgroundMusic = new AudioClip(getClass().getResource(bgm).toExternalForm());
 		backgroundMusic.setCycleCount(AudioClip.INDEFINITE);
