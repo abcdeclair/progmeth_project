@@ -21,7 +21,7 @@ public class EnemyFish extends Fish implements Consumable {
 			height = 105;
 
 		} else if (size == 3) {
-			width = 200;
+			width = 250;
 			height = 90;
 		}
 

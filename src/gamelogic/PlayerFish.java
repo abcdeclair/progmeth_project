@@ -10,7 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
-
+import javafx.scene.paint.Color;
 import logic.Direction;
 
 public class PlayerFish extends Entity implements Consumable {
@@ -18,12 +18,14 @@ public class PlayerFish extends Entity implements Consumable {
 	private int size = 1;
 	private int growth = 0;
 	private List<Items> status;
-	private int speed = 2;
+	private float speed = 2;
 	private int bonus = 1;
 
 	public PlayerFish() {
 		super();
 		status = new ArrayList<Items>();
+		Items i = new Items(2, -20);
+		status.add(i);
 		width = 76;
 		height = 52;
 		direction = Direction.LEFT;
@@ -69,10 +71,11 @@ public class PlayerFish extends Entity implements Consumable {
 	}
 
 	public void setGrowth(int growth) {
+		if (growth < 0) growth = 0;
 		this.growth = growth;
 		if (this.growth >= 100) {
-			width *= 2;
-			height *= 2;
+			width *= 1.5;
+			height *= 1.5;
 			this.growth = 0;
 			this.size++;
 		}
@@ -92,7 +95,17 @@ public class PlayerFish extends Entity implements Consumable {
 		timer.schedule(new TimerTask() {
 			public void run() {
 				status.remove(i);
-				speed /= 2;
+				speed /= 1.5;
+			}
+		}, 5000);
+	}
+	
+	public void removeStatusType4(Items i) {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+				status.remove(i);
+				bonus /= 2;
 			}
 		}, 5000);
 	}
@@ -100,12 +113,15 @@ public class PlayerFish extends Entity implements Consumable {
 	public boolean checkStatusType2() {
 		for (Items i : status) {
 			if (i.getType() == 2) {
+				if (checkStatusType1()) {
+					return true;
+				}
 				Timer timer = new Timer();
 				timer.schedule(new TimerTask() {
 					public void run() {
 						status.remove(i);
 					}
-				}, 3000);
+				}, 1500);
 				return true;
 			}
 		}
@@ -129,7 +145,7 @@ public class PlayerFish extends Entity implements Consumable {
 //		else if (growth > 200) {
 //			setScore(3);
 //		}
-		gamePanel.update(score, growth, getSize());
+		gamePanel.update(score, growth, getSize(), status);
 		for (Items i : status) {
 			System.out.println(i.type);
 		}
@@ -169,33 +185,29 @@ public class PlayerFish extends Entity implements Consumable {
 		// TODO Auto-generated method stub
 		if (!e.isDestroied && e instanceof EnemyFish && x <= e.x + e.width && x + width >= e.x && y <= e.y + e.height && y + height >= e.y) {
 			EnemyFish i = (EnemyFish) e;
-			if (i.getSize() <= getSize() || checkStatusType1()) {
+			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
 				e.isMarkedForDestroying();
 				setScore(score + 20*bonus);
-				setGrowth(growth + 10*bonus);
+				setGrowth(growth + 5*bonus);
 				MainGame.RenderableHolder.eatingSound.play();
 				return true;
 			}
 		}
-		if (!e.isDestroied && e instanceof Items && x <= e.x + e.width && x + width >= e.x && y <= e.y + e.height && y + height >= e.y) {
+		if (!e.isDestroied && e instanceof Items && x <= e.x + e.width && x + width >= e.x && y <= e.y + e.height && y + height >= e.y && size < 4) {
 			Items i = (Items) e;
 			e.isMarkedForDestroying();
 			if (i.type == 1) {
 				status.add(i);
-				speed *= 2;
+				speed *= 1.5;
 				removeStatusType1(i);
 			}
 			else if (i.type == 3) {
 				setGrowth(growth + 50);
 			}
 			else if (i.type == 4) {
+				status.add(i);
 				bonus *= 2;
-				Timer timer = new Timer();
-				timer.schedule(new TimerTask() {
-					public void run() {
-						bonus /= 2;
-					}
-				}, 5000);
+				removeStatusType4(i);
 			}
 			else if (i.type == 5) {
 				setGrowth(growth - 50);
@@ -210,6 +222,14 @@ public class PlayerFish extends Entity implements Consumable {
 		return false;
 	}
 
+	public float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
@@ -222,6 +242,10 @@ public class PlayerFish extends Entity implements Consumable {
 		} else {
 			gc.drawImage(croppedImage, x, y, width, height);
 		}
+//		WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.playerSprite.getPixelReader(),
+//				250, 414, 500, 500);
+//		gc.drawImage(croppedImage, x, y, 300, 300);
+		
 //		gc.drawImage(croppedImage, x, y, width, height);
 
 //		gc.setLineWidth(2.0);

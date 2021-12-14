@@ -37,7 +37,6 @@ public class InGame extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 			
-				
 				logic.newGame();		/// eclair help!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				retrybtn.setVisible(false);
 			}

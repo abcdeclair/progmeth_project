@@ -46,9 +46,18 @@ public class Items extends Entity{
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
+//		if (type == 2) {
+//			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite2.getPixelReader(),
+//					0, 0, 40, 40);
+//			gc.drawImage(croppedImage, x, y, width, height);
+//		}
+		
+			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
 				posX, posY, 40, 40);
-		gc.drawImage(croppedImage, x, y, width, height);
+			gc.drawImage(croppedImage, x, y, width, height);
+		
+		
+		
 	}
 
 	@Override

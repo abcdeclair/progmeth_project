@@ -1,8 +1,12 @@
 package gamelogic;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import MainGame.IRenderable;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -11,12 +15,14 @@ public class GamePanel implements IRenderable{
 	
 	private int prog;
 	private int score;
+	private List<Items> status;
 	
 	public GamePanel() {
 		prog = 0;
 		score = 0;
+		status = new ArrayList<Items>();
 	}
-	public void update(int score, int growth, int size) {
+	public void update(int score, int growth, int size, List<Items> status) {
 		if (size == 1) {
 			prog = 0;
 			prog += growth;
@@ -33,6 +39,7 @@ public class GamePanel implements IRenderable{
 			prog = 300;
 		}
 		this.score = score;
+		this.status = status;
 	}
 	@Override
 	public int getZ() {
@@ -48,6 +55,23 @@ public class GamePanel implements IRenderable{
 		gc.setFill(Color.WHITE);
 		gc.setFont(Font.font("Times New Roman", FontWeight.LIGHT,20));
 		gc.fillText(String.valueOf(score), 50, 30);
+		for (Items i : status) {
+			if (i.type == 1) {
+				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
+						i.posX, i.posY, 40, 40);
+				gc.drawImage(croppedImage, 500, 30, i.width, i.height);
+			}
+			else if (i.type == 2) {
+				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
+						i.posX, i.posY, 40, 40);
+				gc.drawImage(croppedImage, 600, 30, i.width, i.height);
+			}
+			else if (i.type == 4) {
+				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
+						i.posX, i.posY, 40, 40);
+				gc.drawImage(croppedImage, 700, 30, i.width, i.height);
+			}
+		}
 		
 	}
 	@Override
