@@ -23,6 +23,7 @@ public class RenderableHolder {
 	public static Image itemsSprite;
 	public static Image playerSprite;
 	public static AudioClip  eatingSound;
+	public static AudioClip  clickSound;
 
 	static {
 		loadResource();
@@ -49,6 +50,8 @@ public class RenderableHolder {
 		playerSprite = new Image(ClassLoader.getSystemResource("player.png").toString());
 		itemsSprite = new Image(ClassLoader.getSystemResource("items.png").toString());
 		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());
+		eatingSound.setVolume(0.3);
+		clickSound = new AudioClip(ClassLoader.getSystemResource("clicksound.mp3").toString());
 	}
 
 	public void add(IRenderable entity) {

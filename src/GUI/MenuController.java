@@ -1,6 +1,7 @@
 package GUI;
 
 import javafx.animation.AnimationTimer;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import MainGame.IRenderable;
 import MainGame.RenderableHolder;
 import drawing.GameScreen;
 import gamelogic.GameLogic;
@@ -26,16 +28,21 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class MenuController extends VBox implements Initializable {
+	
 
 	@FXML
 	public Button playgameButton;
 
 	@FXML
 	private void PlaygameClick(ActionEvent event) throws IOException {
+		MainGame.RenderableHolder.clickSound.play();
+//		clickSound.setVolume(0.15);
 
 //		FXMLLoader loader = new FXMLLoader(getClass().getResource("settingTask.fxml"));
 //		Parent root = loader.load();
@@ -47,7 +54,7 @@ public class MenuController extends VBox implements Initializable {
 		Scene scene = new Scene(root);
 //		stage.setScene(scene);
 //		stage.setTitle("Fish game");
-		((Node)(event.getSource())).getScene().getWindow().hide();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		app_stage.setScene(scene);
 		Menu.backgroundMusic.stop();
@@ -56,9 +63,9 @@ public class MenuController extends VBox implements Initializable {
 		GameScreen gameScreen = new GameScreen(1400, 800);
 		root.getChildren().add(gameScreen);
 		gameScreen.requestFocus();
-		
+
 		app_stage.show();
-		
+
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				gameScreen.paintComponent();
@@ -76,7 +83,11 @@ public class MenuController extends VBox implements Initializable {
 
 	@FXML
 	private void SettingClick(ActionEvent event) throws IOException {
-
+		
+		
+		
+		MainGame.RenderableHolder.clickSound.play();
+//		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("settingTask.fxml"));
 		Parent root = loader.load();
 
@@ -94,7 +105,15 @@ public class MenuController extends VBox implements Initializable {
 	public Button howtoplayButton;
 
 	@FXML
-	public void HowtoPlayClick() {
+	public void HowtoPlayClick(ActionEvent event) throws IOException {
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage1.fxml"));
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		app_stage.setScene(scene);
+		app_stage.show();
 
 	}
 
