@@ -60,7 +60,7 @@ public class GameLogic {
 							Random random = new Random();
 							if (e instanceof EnemyFish) {
 								EnemyFish i = (EnemyFish) e;
-								EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(700));
+								EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530)+170);
 								if (random.nextBoolean()) {
 									enemyfish.direction = Direction.LEFT;
 								} else {
@@ -143,6 +143,7 @@ public class GameLogic {
 		isLose = false;
 		isWin = false;
 		player = new PlayerFish();
+		player.setPositon(60, 250);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
@@ -155,7 +156,7 @@ public class GameLogic {
 			}
 		}, 15000, 15000);
 		for (int i = 0; i < 10; i++) {
-			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(800));
+			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -164,7 +165,7 @@ public class GameLogic {
 			addNewObject(enemyfish);
 		}
 		for (int i = 0; i < 4; i++) {
-			EnemyFish enemyfish = new EnemyFish(2, random.nextInt(1400), random.nextInt(700));
+			EnemyFish enemyfish = new EnemyFish(2, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -173,7 +174,7 @@ public class GameLogic {
 			addNewObject(enemyfish);
 		}
 		for (int i = 0; i < 2; i++) {
-			EnemyFish enemyfish = new EnemyFish(3, random.nextInt(1400), random.nextInt(700));
+			EnemyFish enemyfish = new EnemyFish(3, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -199,6 +200,7 @@ public class GameLogic {
 		isLose = false;
 		isWin = false;
 		player = new PlayerFish();
+		player.setPositon(60, 250);
 		player.setSpeed(3);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -212,7 +214,7 @@ public class GameLogic {
 			}
 		}, 15000, 15000);
 		for (int i = 0; i < 8; i++) {
-			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(800));
+			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -221,7 +223,7 @@ public class GameLogic {
 			addNewObject(enemyfish);
 		}
 		for (int i = 0; i < 5; i++) {
-			EnemyFish enemyfish = new EnemyFish(2, random.nextInt(1400), random.nextInt(700));
+			EnemyFish enemyfish = new EnemyFish(2, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -230,7 +232,7 @@ public class GameLogic {
 			addNewObject(enemyfish);
 		}
 		for (int i = 0; i < 3; i++) {
-			EnemyFish enemyfish = new EnemyFish(3, random.nextInt(1400), random.nextInt(700));
+			EnemyFish enemyfish = new EnemyFish(3, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -255,6 +257,7 @@ public class GameLogic {
 		isLose = false;
 		isWin = false;
 		player = new PlayerFish();
+		player.setPositon(60, 250);
 		player.setSpeed(4);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -268,7 +271,7 @@ public class GameLogic {
 			}
 		}, 15000, 15000);
 		for (int i = 0; i < 8; i++) {
-			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(800));
+			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -277,7 +280,7 @@ public class GameLogic {
 			addNewObject(enemyfish);
 		}
 		for (int i = 0; i < 6; i++) {
-			EnemyFish enemyfish = new EnemyFish(2, random.nextInt(1400), random.nextInt(700));
+			EnemyFish enemyfish = new EnemyFish(2, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {
@@ -286,7 +289,7 @@ public class GameLogic {
 			addNewObject(enemyfish);
 		}
 		for (int i = 0; i < 4; i++) {
-			EnemyFish enemyfish = new EnemyFish(3, random.nextInt(1400), random.nextInt(700));
+			EnemyFish enemyfish = new EnemyFish(3, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
 				enemyfish.direction = Direction.LEFT;
 			} else {

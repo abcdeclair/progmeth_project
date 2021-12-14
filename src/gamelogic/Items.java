@@ -65,6 +65,18 @@ public class Items extends Entity{
 		// TODO Auto-generated method stub
 		Random random = new Random();
 		y -= random.nextInt(1) + 1;
+		
+		if (x > 1400) {
+			x = -width;
+		}
+		if (x + width < 0) {
+			x = 1400;
+		} else {
+			if (y > 800 || y + height < 170) {
+				setMarkedForDestroying(true);
+			}
+		}
+
 	}
 
 }

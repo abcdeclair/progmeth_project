@@ -51,25 +51,25 @@ public class GamePanel implements IRenderable{
 		// TODO Auto-generated method stub
 		gc.setLineWidth(2.0);
 		gc.setFill(Color.GREEN);
-		gc.fillRoundRect(50, 50, prog, 10, 10, 10);
+		gc.fillRoundRect(42, 107, prog*1.3, 10, 10, 10);
 		gc.setFill(Color.WHITE);
-		gc.setFont(Font.font("Times New Roman", FontWeight.LIGHT,20));
-		gc.fillText(String.valueOf(score), 50, 30);
+		gc.setFont(Font.font("Times New Roman", FontWeight.LIGHT,50));
+		gc.fillText(String.valueOf(score), 1100, 65);
 		for (Items i : status) {
 			if (i.type == 1) {
 				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
 						i.posX, i.posY, 40, 40);
-				gc.drawImage(croppedImage, 500, 30, i.width, i.height);
+				gc.drawImage(croppedImage, 1170, 90, i.width, i.height);
 			}
 			else if (i.type == 2) {
 				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
 						i.posX, i.posY, 40, 40);
-				gc.drawImage(croppedImage, 600, 30, i.width, i.height);
+				gc.drawImage(croppedImage, 1100, 90, i.width, i.height);
 			}
 			else if (i.type == 4) {
 				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
 						i.posX, i.posY, 40, 40);
-				gc.drawImage(croppedImage, 700, 30, i.width, i.height);
+				gc.drawImage(croppedImage, 1240, 90, i.width, i.height);
 			}
 		}
 		

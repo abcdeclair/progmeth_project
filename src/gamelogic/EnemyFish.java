@@ -99,7 +99,7 @@ public class EnemyFish extends Fish implements Consumable {
 		if (x + width < 0) {
 			x = 1400;
 		} else {
-			if (y > 800 || y + height < 0) {
+			if (y > 800 || y + height < 170) {
 				setMarkedForDestroying(true);
 			}
 		}

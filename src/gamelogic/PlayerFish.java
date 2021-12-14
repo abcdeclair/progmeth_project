@@ -155,7 +155,7 @@ public class PlayerFish extends Entity implements Consumable {
 	@Override
 	public void move() {
 		// TODO Auto-generated method stub
-		if (InputUtility.getKeyPressed(KeyCode.W) && 0 <= y) {
+		if (InputUtility.getKeyPressed(KeyCode.W) && 170 <= y) {
 			y -= speed/2;
 		} else if (InputUtility.getKeyPressed(KeyCode.S) && y <= 800 - height) {
 			y += speed/2;

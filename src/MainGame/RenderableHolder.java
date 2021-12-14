@@ -44,7 +44,7 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-		mapSprite = new Image(ClassLoader.getSystemResource("bg.png").toString());
+		mapSprite = new Image(ClassLoader.getSystemResource("bgInGame.png").toString());
 		enemyFish1Sprite = new Image(ClassLoader.getSystemResource("enemyfish1.png").toString());
 		enemyFish2Sprite = new Image(ClassLoader.getSystemResource("enemyfish2.png").toString());
 		enemyFish3Sprite = new Image(ClassLoader.getSystemResource("enemyfish3.png").toString());
@@ -53,7 +53,7 @@ public class RenderableHolder {
 		itemsSprite2 = new Image(ClassLoader.getSystemResource("item2.png").toString());
 		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());
 		eatingSound.setVolume(0.3);
-		clickSound = new AudioClip(ClassLoader.getSystemResource("clicksound.mp3").toString());
+		clickSound = new AudioClip(ClassLoader.getSystemResource("clickSound.wav").toString());
 	}
 
 	public void add(IRenderable entity) {
