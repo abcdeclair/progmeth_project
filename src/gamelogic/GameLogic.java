@@ -16,22 +16,29 @@ public class GameLogic {
 	private PlayerFish player;
 	private boolean isLose;
 	private boolean isWin;
+	private int level;
 	GamePanel gamePanel;
 	EndRound endingSene;
+	Thread t;
+
+
+	RunningClass rc;
 
 	public GameLogic() {
+		MainGame.RenderableHolder.getInstance().getEntities().clear();
+		//level = 1;
 		this.gameObjectContainer = new ArrayList<Entity>();
-		level3();
-		Items item = new Items(1, 200);
-		addNewObject(item);
-		item = new Items(2, 100);
-		addNewObject(item);
-		item = new Items(3, 500);
-		addNewObject(item);
-		item = new Items(4, 600);
-		addNewObject(item);
-		item = new Items(5, 700);
-		addNewObject(item);
+		gameObjectContainer.clear();
+		player = new PlayerFish();
+		player.setPositon(60, 250);
+		addNewObject(player);
+		Field field = new Field();
+		RenderableHolder.getInstance().add(field);
+		gamePanel = new GamePanel();
+		RenderableHolder.getInstance().add(gamePanel);
+		endingSene = new EndRound();
+		RenderableHolder.getInstance().add(endingSene);
+		
 	}
 
 	protected void addNewObject(Entity entity) {
@@ -39,9 +46,6 @@ public class GameLogic {
 		RenderableHolder.getInstance().add(entity);
 	}
 	
-	public void killThead(Thread t) {
-		
-	}
 
 	public void logicUpdate() {
 		player.update(gamePanel);
@@ -53,97 +57,109 @@ public class GameLogic {
 			if (e.isDestroied) {
 				gameObjectContainer.remove(e);
 			} else {
-				Thread t = new Thread() {
-					public void run() {
-						e.move();
-						if (player.consume(e)) {
-							Random random = new Random();
-							if (e instanceof EnemyFish) {
-								EnemyFish i = (EnemyFish) e;
-								EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530)+170);
-								if (random.nextBoolean()) {
-									enemyfish.direction = Direction.LEFT;
-								} else {
-									enemyfish.direction = Direction.RIGHT;
-								}
-								addNewObject(enemyfish);
-							}
+//				rc = new RunningClass(e, player, this);
+//				t = new Thread(rc);
+////				Thread.yield();
+//				t.start();
+				e.move();
+				if (player.consume(e)) {
+					Random random = new Random();
+					if (e instanceof EnemyFish) {
+						EnemyFish i = (EnemyFish) e;
+						EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530) + 170);
+						if (random.nextBoolean()) {
+							enemyfish.direction = Direction.LEFT;
+						} else {
+							enemyfish.direction = Direction.RIGHT;
 						}
-						if (e instanceof EnemyFish) {
-							EnemyFish i = (EnemyFish) e;
-							if (i.consume(player)) {
-								isLose = true;
-							}
-						}
+						addNewObject(enemyfish);
 					}
-				};
-				t.start();
+				}
+				if (e instanceof EnemyFish) {
+					EnemyFish i = (EnemyFish) e;
+					if (i.consume(player)) {
+						setLose(true);
+					}
+				}
 			}
 		}
+//		if (isLose) {
+//			endingSene.show("Lose");
+//			MainGame.InGame.getRetrybtn().setVisible(true);
+//			
+//		}
+//		if (isWin) {
+//			endingSene.show("Win");
+//			MainGame.InGame.getRetrybtn().setVisible(true);
+//			if(level == 1 && MainGame.InGame.getCurrentLevel()==1) {
+//				MainGame.InGame.setCurrentLevel(2);
+//			}
+//			if(level == 2 && MainGame.InGame.getCurrentLevel()==2) {
+//				MainGame.InGame.setCurrentLevel(3);
+//			}
+//		}
+//		
 		if (isLose) {
 			endingSene.show("Lose");
-			newGame();
-			//InGame.getRetrybtn().setVisible(true);
+			GUI.LevelMenuController.getRetrybtn().setVisible(true);
+			
 		}
 		if (isWin) {
 			endingSene.show("Win");
+			GUI.LevelMenuController.getRetrybtn().setVisible(true);
+			if(level == 1 && GUI.Menu.getCurrentLevel()==1) {
+				GUI.Menu.setCurrentLevel(2);
+			}
+			if(level == 2 && GUI.Menu.getCurrentLevel()==2) {
+				GUI.Menu.setCurrentLevel(3);
+			}
 		}
 
 	}
-
-	public void newGame() {
-		gameObjectContainer.clear();
-//		player.reset();
-//		isLose = false;
-//		isWin = false;
-//		gamePanel.reset();
-		endingSene.unshow();
-		RenderableHolder.getInstance().getEntities().clear();
-		gameObjectContainer = new ArrayList<Entity>();
-		level1();
-//		for (int in = gameObjectContainer.size() - 1; in >= 0; in--) {
-//			Entity e = gameObjectContainer.get(in);
-//			e.isMarkedForDestroying();
-//		}
-//		player.setMarkedForDestroying(false);
-//		Random random = new Random();
-//		Field field = new Field();
-//		RenderableHolder.getInstance().add(field);
-//		gamePanel = new GamePanel();
-//		RenderableHolder.getInstance().add(gamePanel);
-//		endingSene = new EndRound();
-//		RenderableHolder.getInstance().add(endingSene);
-//		isLose = false;
-//		isWin = false;
-//		Items item = new Items(1, random.nextInt(1400));
-//		for (int i = 0; i < 50; i++) {
-//			EnemyFish enemyfish = new EnemyFish(random.nextInt(3), random.nextInt(1400), random.nextInt(800));
-//			if (random.nextBoolean()) {
-//				enemyfish.direction = Direction.LEFT;
-//			} else {
-//				enemyfish.direction = Direction.RIGHT;
-//			}
-//			addNewObject(enemyfish);
-//		}
-//		addNewObject(item);
-//		addNewObject(player);
+	
+	
+	
+	public void setLose(boolean isLose) {
+		this.isLose = isLose;
 	}
 
+	public Thread getT() {
+		return t;
+	}
+	
+	public RunningClass getRc() {
+		return rc;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void settingLevel() {
+		if (level == 1) {
+			level1();
+		}
+		else if (level == 2) {
+			level2();
+		}
+		else if (level == 3) {
+			level3();
+		}
+		else {
+			System.out.println("error select level");
+		}
+	}
+	
+
 	public void level1() {
-		this.gameObjectContainer.clear();
-		RenderableHolder.getInstance().getEntities().clear();
 
 		Random random = new Random();
-		Field field = new Field();
-		RenderableHolder.getInstance().add(field);
-		gamePanel = new GamePanel();
-		RenderableHolder.getInstance().add(gamePanel);
-		endingSene = new EndRound();
-		RenderableHolder.getInstance().add(endingSene);
 		isLose = false;
 		isWin = false;
-		player = new PlayerFish();
-		player.setPositon(60, 250);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
@@ -182,25 +198,15 @@ public class GameLogic {
 			}
 			addNewObject(enemyfish);
 		}
-		addNewObject(player);
+		
 	}
 	
 	
 	public void level2() {
-		this.gameObjectContainer.clear();
-		RenderableHolder.getInstance().getEntities().clear();
 
 		Random random = new Random();
-		Field field = new Field();
-		RenderableHolder.getInstance().add(field);
-		gamePanel = new GamePanel();
-		RenderableHolder.getInstance().add(gamePanel);
-		endingSene = new EndRound();
-		RenderableHolder.getInstance().add(endingSene);
 		isLose = false;
 		isWin = false;
-		player = new PlayerFish();
-		player.setPositon(60, 250);
 		player.setSpeed(3);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -240,24 +246,14 @@ public class GameLogic {
 			}
 			addNewObject(enemyfish);
 		}
-		addNewObject(player);
+		
 	}
 	
 	public void level3() {
-		this.gameObjectContainer.clear();
-		RenderableHolder.getInstance().getEntities().clear();
 
 		Random random = new Random();
-		Field field = new Field();
-		RenderableHolder.getInstance().add(field);
-		gamePanel = new GamePanel();
-		RenderableHolder.getInstance().add(gamePanel);
-		endingSene = new EndRound();
-		RenderableHolder.getInstance().add(endingSene);
 		isLose = false;
 		isWin = false;
-		player = new PlayerFish();
-		player.setPositon(60, 250);
 		player.setSpeed(4);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -297,6 +293,6 @@ public class GameLogic {
 			}
 			addNewObject(enemyfish);
 		}
-		addNewObject(player);
+		
 	}
 }

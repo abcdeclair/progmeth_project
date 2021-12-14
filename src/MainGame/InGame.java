@@ -2,6 +2,8 @@ package MainGame;
 
 
 
+import java.io.IOException;
+
 import drawing.GameScreen;
 import gamelogic.GameLogic;
 import input.InputUtility;
@@ -9,6 +11,9 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -17,7 +22,16 @@ import javafx.stage.WindowEvent;
 
 public class InGame extends Application {
 	private static Button retrybtn;
+	private static int currentLevel = 1;
 	
+	public static int getCurrentLevel() {
+		return currentLevel;
+	}
+
+	public static void setCurrentLevel(int currentLevel) {
+		InGame.currentLevel = currentLevel;
+	}
+
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
@@ -28,8 +42,9 @@ public class InGame extends Application {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("Fish game");
-
+		
 		GameLogic logic = new GameLogic();
+		logic.settingLevel();
 		GameScreen gameScreen = new GameScreen(1400, 800);
 		retrybtn = new Button("Retry");
 		retrybtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -37,8 +52,25 @@ public class InGame extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 			
-				logic.newGame();		/// eclair help!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				retrybtn.setVisible(false);
+//				logic.getRc().stop();
+//				animation.stop();
+//				logic.getRc().sleep(100);
+//				logic.getRc().interrupt();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
+				Parent root = new Parent() {
+				};
+				try {
+					root = loader.load();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Scene scene = new Scene(root);
+				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				((Node) (event.getSource())).getScene().getWindow().hide();
+				app_stage.setScene(scene);
+				app_stage.show();
 			}
 		});
 		retrybtn.setVisible(false);

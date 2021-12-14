@@ -37,7 +37,8 @@ public class EndRound implements IRenderable{
 		// TODO Auto-generated method stub
 		gc.setFill(Color.WHITE);
 		gc.setFont(Font.font("Times New Roman", FontWeight.BOLD, 60));
-		gc.fillText(endingText, 650, 350);
+		gc.fillText(endingText, 640, 300);
+		gc.drawImage(MainGame.RenderableHolder.homeButton, 650, 350);
 	}
 
 	@Override

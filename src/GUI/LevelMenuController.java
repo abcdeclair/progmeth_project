@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.event.MouseAdapter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -12,13 +14,17 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -47,25 +53,28 @@ public class LevelMenuController extends StackPane implements Initializable {
 	Image levelUnlocked = new Image("file:res/levelUnlocked.png");
 	Image levelCheck = new Image("file:res/levelcheck.png");
 	private static Button retrybtn;
+	GameLogic logic;
+	AnimationTimer animation;
 
-	private int getSelectedLevel() {
-		if (level1CheckBox.isSelected()) {
-			return 1;
-		}
-		else if (level2CheckBox.isSelected()) {
-			return 2;
-		}
-		else if (level3CheckBox.isSelected()){
-			return 3;
-		}
-		return 0;
-	}
+//	public void getSelectedLevel() {
+//		if (level1CheckBox.isSelected()) {
+//			logic.setLevel(1);
+//		}
+//		else if (level2CheckBox.isSelected()) {
+//			logic.setLevel(2);
+//		}
+//		else if (level3CheckBox.isSelected()){
+//			logic.setLevel(3);
+//		}
+//		logic.setLevel(1);
+//	}
 
 	@FXML
 	private void level1Check(ActionEvent event) {
 		if (level1CheckBox.isSelected()) {
 
 			level1Pic.setImage(levelCheck);
+			logic.setLevel(1);
 
 			if (!level2CheckBox.isDisable()) {
 				level2CheckBox.setSelected(false);
@@ -90,6 +99,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 
 			level2CheckBox.setSelected(true);
 			level2Pic.setImage(levelCheck);
+			logic.setLevel(2);
 
 			if (!level1CheckBox.isDisable()) {
 				level1CheckBox.setSelected(false);
@@ -114,6 +124,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 
 			level3CheckBox.setSelected(true);
 			level3Pic.setImage(levelCheck);
+			logic.setLevel(3);
 
 			if (!level1CheckBox.isDisable()) {
 				level1CheckBox.setSelected(false);
@@ -135,7 +146,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-
+		logic = new GameLogic();
 		if (Menu.getCurrentLevel() == 1) {
 			level1Pic.setImage(levelUnlocked);
 			level2Pic.setImage(levelLocked);
@@ -171,68 +182,79 @@ public class LevelMenuController extends StackPane implements Initializable {
 	}
 
 	public void playGameClick(ActionEvent event) {
-//		MainGame.RenderableHolder.clickSound.play();
-////		clickSound.setVolume(0.15);
-//
-//		StackPane root = new StackPane();
-//		Scene scene = new Scene(root);
-//
-//		
-//
-//		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//		app_stage.setScene(scene);
-//		Menu.backgroundMusic.stop();
-//		app_stage.setTitle("Mobiew's Ocean");
-//
-//		GameLogic logic = new GameLogic();
-//		GameScreen gameScreen = new GameScreen(1400, 800);
-//		retrybtn = new Button("Retry");
-//		retrybtn.setOnAction(new EventHandler<ActionEvent>() {
-//
-//			@Override
-//			public void handle(ActionEvent event) {
-//
-//				logic.newGame(); /// eclair help!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//				retrybtn.setVisible(false);
-//			}
-//		});
-//		retrybtn.setVisible(false);
-//		root.getChildren().add(gameScreen);
-//		root.getChildren().add(retrybtn);
-//		gameScreen.requestFocus();
-//
-//		app_stage.show();
-//		((Node) (event.getSource())).getScene().getWindow().hide();
-//
-//		AnimationTimer animation = new AnimationTimer() {
-//			public void handle(long now) {
-//				gameScreen.paintComponent();
-//				logic.logicUpdate();
-//				RenderableHolder.getInstance().update();
-//				InputUtility.updateInputState();
-//			}
-//		};
-//		animation.start();
-//
-//		app_stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-//			@Override
-//			public void handle(WindowEvent e) {
-//				try {
-//					stop();
-//				} catch (Exception e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				System.exit(0);
-//			}
-//		});
+		MainGame.RenderableHolder.clickSound.play();
+	
+		StackPane root = new StackPane();
+		Scene scene = new Scene(root);
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		app_stage.setScene(scene);
+		Menu.backgroundMusic.stop();
+		app_stage.setTitle("Mobiew's Ocean");
+		logic.settingLevel();
+		GameScreen gameScreen = new GameScreen(1400, 800);
+		retrybtn = new Button("Retry");
+		retrybtn.setOpacity(0);
+		retrybtn.setCursor(Cursor.HAND);
+//		retrybtn.setLayoutX(250);
+//	    retrybtn.setLayoutY(220);
+		retrybtn.setPrefWidth(100);
+		retrybtn.setPrefHeight(100);
+		retrybtn.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				
+				retrybtn.setVisible(false);
+//				logic.getRc().stop();
+				animation.stop();
+//				logic.getRc().sleep(100);
+//				logic.getRc().interrupt();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
+				Parent root = new Parent() {
+				};
+				try {
+					root = loader.load();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Scene scene = new Scene(root);
+				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				((Node) (event.getSource())).getScene().getWindow().hide();
+				app_stage.setScene(scene);
+				app_stage.show();
+				
+//				Thread.currentThread().interrupt();
+//				logic.getT().interrupt();
+//				logic.getT().suspend();
+				
+			}
+		});
+		retrybtn.setVisible(false);
+		root.getChildren().add(gameScreen);
+		root.getChildren().add(retrybtn);
+		gameScreen.requestFocus();
+		app_stage.show();
+		
+		animation = new AnimationTimer() {
+			public void handle(long now) {
+				gameScreen.paintComponent();
+				logic.logicUpdate();
+				RenderableHolder.getInstance().update();
+				InputUtility.updateInputState();
+			}
+		};
+		animation.start();
+		
+	}
+	
+	
 
+	public static Button getRetrybtn() {
+		return retrybtn;
 	}
 
-//	public void stop() throws Exception {
-//		this.stop(); // To change body of generated methods, choose Tools | Templates.
-//		System.exit(0);
-//		Platform.exit();
-//	}
+	
 
 }

@@ -48,7 +48,7 @@ public class MenuController extends VBox implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("levelMenu.fxml"));
 		Parent root = loader.load();
 
-
+		((Node) (event.getSource())).getScene().getWindow().hide();
 		Scene scene = new Scene(root);
 		Stage app_stage = new Stage();
 		app_stage.initStyle(StageStyle.UNDECORATED);

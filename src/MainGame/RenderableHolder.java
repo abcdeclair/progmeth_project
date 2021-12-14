@@ -8,7 +8,11 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import MainGame.RenderableHolder;
+import gamelogic.EndRound;
 import gamelogic.EnemyFish;
+import gamelogic.Field;
+import gamelogic.GamePanel;
+import gamelogic.Items;
 import gamelogic.PlayerFish;
 
 public class RenderableHolder {
@@ -23,6 +27,7 @@ public class RenderableHolder {
 	public static Image itemsSprite;
 	public static Image itemsSprite2;
 	public static Image playerSprite;
+	public static Image homeButton;
 	public static AudioClip  eatingSound;
 	public static AudioClip  clickSound;
 
@@ -51,6 +56,7 @@ public class RenderableHolder {
 		playerSprite = new Image(ClassLoader.getSystemResource("player.png").toString());
 		itemsSprite = new Image(ClassLoader.getSystemResource("items1.png").toString());
 		itemsSprite2 = new Image(ClassLoader.getSystemResource("item2.png").toString());
+		homeButton = new Image(ClassLoader.getSystemResource("homeButton.png").toString());
 		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());
 		eatingSound.setVolume(0.3);
 		clickSound = new AudioClip(ClassLoader.getSystemResource("clickSound.wav").toString());
@@ -63,7 +69,10 @@ public class RenderableHolder {
 		for(IRenderable x: entities){
 			if(x instanceof PlayerFish) System.out.println("fish");
 			if(x instanceof EnemyFish) System.out.println("enemyfish");
-			//if(x instanceof Field) System.out.println("field");
+			if(x instanceof Field) System.out.println("field");
+			if(x instanceof GamePanel) System.out.println("panel");
+			if(x instanceof EndRound) System.out.println("endround");
+			if(x instanceof Items) System.out.println("item");
 			
 		}
 	}

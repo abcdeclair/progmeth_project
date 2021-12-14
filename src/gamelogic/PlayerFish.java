@@ -188,7 +188,7 @@ public class PlayerFish extends Entity implements Consumable {
 			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
 				e.isMarkedForDestroying();
 				setScore(score + 20*bonus);
-				setGrowth(growth + 5*bonus);
+				setGrowth(growth + 20*bonus);
 				MainGame.RenderableHolder.eatingSound.play();
 				return true;
 			}

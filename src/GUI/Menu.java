@@ -4,6 +4,7 @@ package GUI;
 import javafx.scene.media.Media;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
@@ -32,14 +33,14 @@ public class Menu extends Application{
 
 	public void start(Stage primaryStage) throws Exception {
 		// TODO
-		setCurrentLevel(2);
+		setCurrentLevel(1);
 
 		backgroundMusic = new AudioClip(getClass().getResource(bgm).toExternalForm());
 		backgroundMusic.setCycleCount(AudioClip.INDEFINITE);
 		backgroundMusic.setVolume(0.15);
 		backgroundMusic.play();
 
-
+	
 		Parent root = FXMLLoader.load(getClass().getResource("menuButton.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
