@@ -207,6 +207,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 				
 				retrybtn.setVisible(false);
 //				logic.getRc().stop();
+				logic.reset();
 				animation.stop();
 //				logic.getRc().sleep(100);
 //				logic.getRc().interrupt();

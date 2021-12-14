@@ -20,16 +20,15 @@ public class GameLogic {
 	GamePanel gamePanel;
 	EndRound endingSene;
 	Thread t;
-
-
 	RunningClass rc;
+	
+	
 
 	public GameLogic() {
-		MainGame.RenderableHolder.getInstance().getEntities().clear();
+//		MainGame.RenderableHolder.getInstance().getEntities().clear();
 		//level = 1;
 		this.gameObjectContainer = new ArrayList<Entity>();
-		gameObjectContainer.clear();
-		player = new PlayerFish();
+		initialize();
 		player.setPositon(60, 250);
 		addNewObject(player);
 		Field field = new Field();
@@ -39,6 +38,33 @@ public class GameLogic {
 		endingSene = new EndRound();
 		RenderableHolder.getInstance().add(endingSene);
 		
+	}
+	
+	public void initialize() {
+        isLose = false;
+        isWin = false;
+        MainGame.RenderableHolder.getInstance().reset();
+        gameObjectContainer.clear();
+        settingLevel();
+        
+        if (player == null) {
+            player = new PlayerFish();
+        } else {
+            player.reset();
+        }
+    }
+	
+	public void reset() {
+		isLose = false;
+        isWin = false;
+        MainGame.RenderableHolder.getInstance().reset();
+        gameObjectContainer.clear();
+        
+        if (player == null) {
+            player = new PlayerFish();
+        } else {
+            player.reset();
+        }
 	}
 
 	protected void addNewObject(Entity entity) {

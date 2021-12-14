@@ -10,6 +10,7 @@ import javafx.scene.media.AudioClip;
 import MainGame.RenderableHolder;
 import gamelogic.EndRound;
 import gamelogic.EnemyFish;
+import gamelogic.Entity;
 import gamelogic.Field;
 import gamelogic.GamePanel;
 import gamelogic.Items;
@@ -73,6 +74,18 @@ public class RenderableHolder {
 			if(x instanceof GamePanel) System.out.println("panel");
 			if(x instanceof EndRound) System.out.println("endround");
 			if(x instanceof Items) System.out.println("item");
+			
+		}
+	}
+	
+	public void reset() {
+		for(IRenderable x: entities){
+			if (x instanceof Entity) {
+				((Entity) x).isMarkedForDestroying();
+			}
+			if (x instanceof EndRound) {
+				((EndRound) x).setDestroyed();
+			}
 			
 		}
 	}

@@ -9,6 +9,7 @@ import javafx.scene.text.FontWeight;
 public class EndRound implements IRenderable{
 
 	private boolean show;
+	private boolean isDestroyed = false;
 	String endingText ;
 	
 	public EndRound() {
@@ -44,7 +45,11 @@ public class EndRound implements IRenderable{
 	@Override
 	public boolean isDestroyed() {
 		// TODO Auto-generated method stub
-		return false;
+		return isDestroyed;
+	}
+
+	public void setDestroyed() {
+		this.isDestroyed = true;
 	}
 
 	@Override
