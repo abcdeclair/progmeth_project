@@ -55,6 +55,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	private static Button retrybtn;
 	GameLogic logic = new GameLogic();
 	AnimationTimer animation;
+	GameScreen gameScreen = new GameScreen(1400, 800);
 
 //	public void getSelectedLevel() {
 //		if (level1CheckBox.isSelected()) {
@@ -203,7 +204,6 @@ public class LevelMenuController extends StackPane implements Initializable {
 //		Menu.backgroundMusic.stop();
 			app_stage.setTitle("Mobiew's Ocean");
 			logic.settingLevel();
-			GameScreen gameScreen = new GameScreen(1400, 800);
 			retrybtn = new Button("Retry");
 			retrybtn.setOpacity(0);
 			retrybtn.setCursor(Cursor.HAND);
@@ -216,7 +216,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 
 					retrybtn.setVisible(false);
 					logic.reset();
-//					logic.getRc().stop();
+					logic.getRc().stop();
 					animation.stop();
 //				logic.getRc().sleep(100);
 //				logic.getRc().interrupt();

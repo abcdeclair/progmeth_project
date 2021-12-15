@@ -90,30 +90,30 @@ public class GameLogic {
 			if (e.isDestroyed()) {
 				gameObjectContainer.remove(e);
 			} else {
-//				rc = new ThreadRunning(e, player, this);
-//				t = new Thread(rc);
-////				Thread.yield();
-//				t.start();
-				e.move();
-				if (player.consume(e)) {
-					Random random = new Random();
-					if (e instanceof EnemyFish) {
-						EnemyFish i = (EnemyFish) e;
-						EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530) + 170);
-						if (random.nextBoolean()) {
-							enemyfish.setDirection(Direction.LEFT);
-						} else {
-							enemyfish.setDirection(Direction.RIGHT);
-						}
-						addNewObject(enemyfish);
-					}
-				}
-				if (e instanceof EnemyFish) {
-					EnemyFish i = (EnemyFish) e;
-					if (i.consume(player)) {
-						setLose(true);
-					}
-				}
+				rc = new ThreadRunning(e, player, this);
+				t = new Thread(rc);
+//				Thread.yield();
+				t.start();
+//				e.move();
+//				if (player.consume(e)) {
+//					Random random = new Random();
+//					if (e instanceof EnemyFish) {
+//						EnemyFish i = (EnemyFish) e;
+//						EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530) + 170);
+//						if (random.nextBoolean()) {
+//							enemyfish.setDirection(Direction.LEFT);
+//						} else {
+//							enemyfish.setDirection(Direction.RIGHT);
+//						}
+//						addNewObject(enemyfish);
+//					}
+//				}
+//				if (e instanceof EnemyFish) {
+//					EnemyFish i = (EnemyFish) e;
+//					if (i.consume(player)) {
+//						setLose(true);
+//					}
+//				}
 			}
 		}
 //		if (isLose) {

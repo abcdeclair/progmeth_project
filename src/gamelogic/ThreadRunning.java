@@ -35,13 +35,20 @@ public class ThreadRunning implements Runnable{
 				Random random = new Random();
 				if (e instanceof EnemyFish) {
 					EnemyFish i = (EnemyFish) e;
-					EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530) + 170);
+//					EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530) + 170);
+//					if (random.nextBoolean()) {
+//						enemyfish.setDirection(Direction.LEFT);
+//					} else {
+//						enemyfish.setDirection(Direction.RIGHT);
+//					}
+//					logic.addNewObject(enemyfish);
+					
+					i.setPositon(1600, random.nextInt(530) + 170);
 					if (random.nextBoolean()) {
-						enemyfish.setDirection(Direction.LEFT);
+						i.setDirection(Direction.LEFT);
 					} else {
-						enemyfish.setDirection(Direction.RIGHT);
+						i.setDirection(Direction.RIGHT);
 					}
-					logic.addNewObject(enemyfish);
 				}
 			}
 			if (e instanceof EnemyFish) {

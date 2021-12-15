@@ -177,7 +177,7 @@ public class PlayerFish extends Fish implements Consumable {
 			}
 			setAnimetiontimer(getAnimetiontimer() + 1);
 			direction = Direction.LEFT;
-		} else if (InputUtility.getKeyPressed(KeyCode.D) && x <= 1400) {
+		} else if (InputUtility.getKeyPressed(KeyCode.D) && x <= 1400-width) {
 			x += speed;
 			if (getAnimetiontimer() == 10) {
 				setAnimetionPosX((getAnimetionPosX() + 126) % 1890);
@@ -195,7 +195,7 @@ public class PlayerFish extends Fish implements Consumable {
 		if (!isDestroied && !e.isDestroyed() && e instanceof EnemyFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
 			EnemyFish i = (EnemyFish) e;
 			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
-				e.isMarkedForDestroying();
+//				e.isMarkedForDestroying();
 				setScore(score + 20*bonus);
 				setGrowth(growth + 20*bonus);
 				shareObject.RenderableHolder.eatingSound.play();
