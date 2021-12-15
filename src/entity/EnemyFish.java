@@ -43,47 +43,47 @@ public class EnemyFish extends Fish implements Consumable {
 		if (direction == Direction.LEFT) {
 			x -= random.nextInt(1) + 1;
 			if (size == 1) {
-				if (getAnimetiontimer() == 10) {
-					setAnimetionPosX((getAnimetionPosX() + 66) % 990);
-					setAnimetiontimer(0);
+				if (getAnimationtimer() == 10) {
+					setAnimationPosX((getAnimetionPosX() + 66) % 990);
+					setAnimationtimer(0);
 				}
-				setAnimetiontimer(getAnimetiontimer()+1);
+				setAnimationtimer(getAnimationtimer()+1);
 			} else if (size == 2) {
-				if (getAnimetiontimer() == 10) {
-					setAnimetionPosX((getAnimetionPosX() + 201) % 3015);
-					setAnimetiontimer(0);
+				if (getAnimationtimer() == 10) {
+					setAnimationPosX((getAnimetionPosX() + 201) % 3015);
+					setAnimationtimer(0);
 				}
-				setAnimetiontimer(getAnimetiontimer()+1);
+				setAnimationtimer(getAnimationtimer()+1);
 
 			} else if (size == 3) {
-				if (getAnimetiontimer() == 10) {
-					setAnimetionPosX((getAnimetionPosX() + 271) % 3794);
-					setAnimetiontimer(0);
+				if (getAnimationtimer() == 10) {
+					setAnimationPosX((getAnimetionPosX() + 271) % 3794);
+					setAnimationtimer(0);
 				}
-				setAnimetiontimer(getAnimetiontimer()+1);
+				setAnimationtimer(getAnimationtimer()+1);
 			}
 
 		} else if (direction == Direction.RIGHT) {
 			x += random.nextInt(1) + 1;
 			if (size == 1) {
-				if (getAnimetiontimer() == 10) {
-					setAnimetionPosX((getAnimetionPosX() + 66) % 990);
-					setAnimetiontimer(0);
+				if (getAnimationtimer() == 10) {
+					setAnimationPosX((getAnimetionPosX() + 66) % 990);
+					setAnimationtimer(0);
 				}
-				setAnimetiontimer(getAnimetiontimer()+1);
+				setAnimationtimer(getAnimationtimer()+1);
 			} else if (size == 2) {
-				if (getAnimetiontimer() == 10) {
-					setAnimetionPosX((getAnimetionPosX() + 201) % 3015);
-					setAnimetiontimer(0);
+				if (getAnimationtimer() == 10) {
+					setAnimationPosX((getAnimetionPosX() + 201) % 3015);
+					setAnimationtimer(0);
 				}
-				setAnimetiontimer(getAnimetiontimer()+1);
+				setAnimationtimer(getAnimationtimer()+1);
 
 			} else if (size == 3) {
-				if (getAnimetiontimer() == 10) {
-					setAnimetionPosX((getAnimetionPosX() + 271) % 3794);
-					setAnimetiontimer(0);
+				if (getAnimationtimer() == 10) {
+					setAnimationPosX((getAnimetionPosX() + 271) % 3794);
+					setAnimationtimer(0);
 				}
-				setAnimetiontimer(getAnimetiontimer()+1);
+				setAnimationtimer(getAnimationtimer()+1);
 			}
 		}
 

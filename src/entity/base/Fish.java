@@ -1,30 +1,29 @@
 package entity.base;
 
-
 public abstract class Fish extends Entity {
-	private int animetionPosX = 1;
-	private int animetiontimer = 0;
-	
-    public Fish() {
-    	super();
-    	animetionPosX = 1;
-    	animetiontimer = 0;
-    	
-    }
-    
-    public int getAnimetionPosX() {
-		return animetionPosX;
+	private int animationPosX;
+	private int animationtimer;
+
+	public Fish() {
+		super();
+		animationPosX = 1;
+		animationtimer = 0;
+
 	}
 
-	public void setAnimetionPosX(int animetionPosX) {
-		this.animetionPosX = animetionPosX;
+	public int getAnimetionPosX() {
+		return animationPosX;
 	}
 
-	public int getAnimetiontimer() {
-		return animetiontimer;
+	public void setAnimationPosX(int animationPosX) {
+		this.animationPosX = animationPosX;
 	}
 
-	public void setAnimetiontimer(int animetiontimer) {
-		this.animetiontimer = animetiontimer;
+	public int getAnimationtimer() {
+		return animationtimer;
+	}
+
+	public void setAnimationtimer(int animationtimer) {
+		this.animationtimer = animationtimer;
 	}
 }

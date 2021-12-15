@@ -171,19 +171,19 @@ public class PlayerFish extends Fish implements Consumable {
 		}
 		if (InputUtility.getKeyPressed(KeyCode.A) && 0 <= x) {
 			x -= speed;
-			if (getAnimetiontimer() == 10) {
-				setAnimetionPosX((getAnimetionPosX() + 126) % 1890);
-				setAnimetiontimer(0);
+			if (getAnimationtimer() == 10) {
+				setAnimationPosX((getAnimetionPosX() + 126) % 1890);
+				setAnimationtimer(0);
 			}
-			setAnimetiontimer(getAnimetiontimer() + 1);
+			setAnimationtimer(getAnimationtimer() + 1);
 			direction = Direction.LEFT;
 		} else if (InputUtility.getKeyPressed(KeyCode.D) && x <= 1400-width) {
 			x += speed;
-			if (getAnimetiontimer() == 10) {
-				setAnimetionPosX((getAnimetionPosX() + 126) % 1890);
-				setAnimetiontimer(0);
+			if (getAnimationtimer() == 10) {
+				setAnimationPosX((getAnimetionPosX() + 126) % 1890);
+				setAnimationtimer(0);
 			}
-			setAnimetiontimer(getAnimetiontimer() + 1);
+			setAnimationtimer(getAnimationtimer() + 1);
 			direction = Direction.RIGHT;
 		}
 
@@ -192,7 +192,7 @@ public class PlayerFish extends Fish implements Consumable {
 	@Override
 	public boolean consume(Entity e) {
 		// TODO Auto-generated method stub
-		if (!isDestroied && !e.isDestroyed() && e instanceof EnemyFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
+		if (!isDestroyed && !e.isDestroyed() && e instanceof EnemyFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
 			EnemyFish i = (EnemyFish) e;
 			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
 //				e.isMarkedForDestroying();
@@ -202,7 +202,7 @@ public class PlayerFish extends Fish implements Consumable {
 				return true;
 			}
 		}
-		if (!isDestroied && !e.isDestroyed() && e instanceof Items && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY() && size < 4) {
+		if (!isDestroyed && !e.isDestroyed() && e instanceof Items && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY() && size < 4) {
 			Items i = (Items) e;
 			e.isMarkedForDestroying();
 			if (i.type == 1) {
