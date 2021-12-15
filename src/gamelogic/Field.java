@@ -1,7 +1,7 @@
 package gamelogic;
 
 import javafx.scene.canvas.GraphicsContext;
-import MainGame.*;
+import shareObject.*;
 
 public class Field implements IRenderable {
 
@@ -12,7 +12,7 @@ public class Field implements IRenderable {
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		gc.drawImage(MainGame.RenderableHolder.mapSprite, 0, 0, 1400, 800);
+		gc.drawImage(shareObject.RenderableHolder.mapSprite, 0, 0, 1400, 800);
 	}
 
 	@Override

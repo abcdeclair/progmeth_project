@@ -1,9 +1,9 @@
-package gamelogic;
+package entity.base;
 
 import java.awt.Rectangle;
 
-import MainGame.IRenderable;
-import logic.Direction;
+import direction.Direction;
+import shareObject.IRenderable;
 
 public abstract class Entity implements IRenderable{
 	protected int x;
@@ -12,15 +12,10 @@ public abstract class Entity implements IRenderable{
 	protected int width;
 	protected int height;
 	protected Direction direction;
-	protected boolean isControlledByAi;
 	protected boolean isDestroied;
-	private boolean isDestroyed;
 	private boolean isVisible;
-	private int animetionPosX = 1;
-	private int animetiontimer = 0;
 
 	public Entity() {
-		isControlledByAi = false;
 		isDestroied = false;
 		isVisible = true;
 		z = 0;
@@ -35,21 +30,12 @@ public abstract class Entity implements IRenderable{
 		this.isVisible = isVisible;
 	}
 
-	public Rectangle getBoundingBox() {
-		return new Rectangle(x, y, width, height);
-	}
-
-	public boolean intersects(Rectangle rectangle) {
-		return getBoundingBox().intersects(rectangle);
-	}
-
 	public void setDirection(Direction changeDirection) {
 		direction = changeDirection;
 	}
 	
 	public abstract void move();
 	
-	//public abstract void updateState( GameManager gameManager, GameMapManager gameMapManager, PlayerFish playerFish);
 
 	public void setPositon( int x, int y) {
         this.x = x;
@@ -76,7 +62,11 @@ public abstract class Entity implements IRenderable{
         return width;
     }
 
-    public void setWidth( int width) {
+    public Direction getDirection() {
+		return direction;
+	}
+
+	public void setWidth( int width) {
         this.width = width;
     }
 
@@ -88,13 +78,8 @@ public abstract class Entity implements IRenderable{
         this.height = height;
     }
     
-    public boolean isControlledByAi() {
-        return isControlledByAi;
-    }
 
-    public void setControlledByAi( boolean isControlledByAi) {
-        this.isControlledByAi = isControlledByAi;
-    }
+
     
     public boolean isMarkedForDestroying() {
     	isVisible = false;
@@ -106,26 +91,10 @@ public abstract class Entity implements IRenderable{
         this.isDestroied = isMarkedForDestroying;
         this.isVisible = !isMarkedForDestroying;
     }
-    
-    public int getAnimetionPosX() {
-		return animetionPosX;
-	}
-
-	public void setAnimetionPosX(int animetionPosX) {
-		this.animetionPosX = animetionPosX;
-	}
-
-	public int getAnimetiontimer() {
-		return animetiontimer;
-	}
-
-	public void setAnimetiontimer(int animetiontimer) {
-		this.animetiontimer = animetiontimer;
-	}
 
     @Override
 	public boolean isDestroyed(){
-		return isDestroyed;
+		return isDestroied;
 	}
 	
 	@Override

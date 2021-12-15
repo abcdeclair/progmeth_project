@@ -1,10 +1,10 @@
 package gamelogic;
 
-import MainGame.IRenderable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import shareObject.IRenderable;
 
 public class EndRound implements IRenderable{
 
@@ -39,7 +39,7 @@ public class EndRound implements IRenderable{
 		gc.setFill(Color.WHITE);
 		gc.setFont(Font.font("Times New Roman", FontWeight.BOLD, 60));
 		gc.fillText(endingText, 640, 300);
-		gc.drawImage(MainGame.RenderableHolder.homeButton, 650, 350);
+		gc.drawImage(shareObject.RenderableHolder.homeButton, 650, 350);
 	}
 
 	@Override

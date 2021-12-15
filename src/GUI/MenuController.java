@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import MainGame.IRenderable;
-import MainGame.RenderableHolder;
 import drawing.GameScreen;
 import gamelogic.GameLogic;
 import input.InputUtility;
@@ -34,6 +32,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import shareObject.IRenderable;
+import shareObject.RenderableHolder;
 
 public class MenuController extends VBox implements Initializable {
 
@@ -43,7 +43,7 @@ public class MenuController extends VBox implements Initializable {
 	@FXML
 	private void PlaygameClick(ActionEvent event) throws IOException {
 
-		MainGame.RenderableHolder.clickSound.play();
+		shareObject.RenderableHolder.clickSound.play();
 //		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("levelMenu.fxml"));
 		Parent root = loader.load();
@@ -61,7 +61,7 @@ public class MenuController extends VBox implements Initializable {
 	@FXML
 	private void SettingClick(ActionEvent event) throws IOException {
 
-		MainGame.RenderableHolder.clickSound.play();
+		shareObject.RenderableHolder.clickSound.play();
 //		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("settingTask.fxml"));
 		Parent root = loader.load();
@@ -81,7 +81,7 @@ public class MenuController extends VBox implements Initializable {
 	@FXML
 	public void HowtoPlayClick(ActionEvent event) throws IOException {
 
-		MainGame.RenderableHolder.clickSound.play();
+		shareObject.RenderableHolder.clickSound.play();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage1.fxml"));
 		Parent root = loader.load();

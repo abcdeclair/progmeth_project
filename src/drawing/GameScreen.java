@@ -7,8 +7,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import MainGame.IRenderable;
-import MainGame.RenderableHolder;
+import shareObject.IRenderable;
+import shareObject.RenderableHolder;
 
 public class GameScreen extends Canvas {
 

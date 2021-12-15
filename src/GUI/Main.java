@@ -16,7 +16,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
-public class Menu extends Application{
+public class Main extends Application{
 	
 	public static final String bgm = "/originalsoundtrack.mp3";
 	public static AudioClip backgroundMusic;
@@ -29,7 +29,7 @@ public class Menu extends Application{
 	}
 
 	public static void setCurrentLevel(int currentLevel) {
-		Menu.currentLevel = currentLevel;
+		Main.currentLevel = currentLevel;
 	}
 
 	public void start(Stage primaryStage) throws Exception {

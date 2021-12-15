@@ -4,12 +4,13 @@ package gamelogic;
 import java.util.ArrayList;
 import java.util.List;
 
-import MainGame.IRenderable;
+import entity.Items;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import shareObject.IRenderable;
 
 public class GamePanel implements IRenderable{
 	
@@ -57,20 +58,20 @@ public class GamePanel implements IRenderable{
 		gc.setFont(Font.font("Times New Roman", FontWeight.LIGHT,50));
 		gc.fillText(String.valueOf(score), 1100, 65);
 		for (Items i : status) {
-			if (i.type == 1) {
-				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
-						i.posX, i.posY, 40, 40);
-				gc.drawImage(croppedImage, 1170, 90, i.width, i.height);
+			if (i.getType() == 1) {
+				WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.itemsSprite.getPixelReader(),
+						i.getPosX(), i.getPosY(), 40, 40);
+				gc.drawImage(croppedImage, 1170, 90, i.getWidth(), i.getHeight());
 			}
-			else if (i.type == 2) {
-				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
-						i.posX, i.posY, 40, 40);
-				gc.drawImage(croppedImage, 1100, 90, i.width, i.height);
+			else if (i.getType() == 2) {
+				WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.itemsSprite.getPixelReader(),
+						i.getPosX(), i.getPosY(), 40, 40);
+				gc.drawImage(croppedImage, 1100, 90, i.getWidth(), i.getHeight());
 			}
-			else if (i.type == 4) {
-				WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
-						i.posX, i.posY, 40, 40);
-				gc.drawImage(croppedImage, 1240, 90, i.width, i.height);
+			else if (i.getType() == 4) {
+				WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.itemsSprite.getPixelReader(),
+						i.getPosX(), i.getPosY(), 40, 40);
+				gc.drawImage(croppedImage, 1240, 90, i.getWidth(), i.getHeight());
 			}
 		}
 		

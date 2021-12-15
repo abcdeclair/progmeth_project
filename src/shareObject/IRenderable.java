@@ -1,4 +1,4 @@
-package MainGame;
+package shareObject;
 
 import javafx.scene.canvas.GraphicsContext;
 

@@ -1,19 +1,23 @@
-package gamelogic;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import direction.Direction;
+import entity.base.Consumable;
+import entity.base.Entity;
+import entity.base.Fish;
+import gamelogic.GamePanel;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import logic.Direction;
 
-public class PlayerFish extends Entity implements Consumable {
+public class PlayerFish extends Fish implements Consumable {
 	private int score = 0;
 	private int size = 1;
 	private int growth = 0;
@@ -78,6 +82,10 @@ public class PlayerFish extends Entity implements Consumable {
 			height *= 1.5;
 			this.growth = 0;
 			this.size++;
+			if(size != 4) {
+				shareObject.RenderableHolder.growUpSound.play();
+			}
+			
 		}
 	}
 
@@ -146,9 +154,9 @@ public class PlayerFish extends Entity implements Consumable {
 //			setScore(3);
 //		}
 		gamePanel.update(score, growth, getSize(), status);
-		for (Items i : status) {
-			System.out.println(i.type);
-		}
+//		for (Items i : status) {
+//			System.out.println(i.type);
+//		}
 
 	}
 
@@ -183,17 +191,17 @@ public class PlayerFish extends Entity implements Consumable {
 	@Override
 	public boolean consume(Entity e) {
 		// TODO Auto-generated method stub
-		if (!e.isDestroied && e instanceof EnemyFish && x <= e.x + e.width && x + width >= e.x && y <= e.y + e.height && y + height >= e.y) {
+		if (!isDestroied && !e.isDestroyed() && e instanceof EnemyFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
 			EnemyFish i = (EnemyFish) e;
 			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
 				e.isMarkedForDestroying();
 				setScore(score + 20*bonus);
-				setGrowth(growth + 20*bonus);
-				MainGame.RenderableHolder.eatingSound.play();
+				setGrowth(growth + 5*bonus);
+				shareObject.RenderableHolder.eatingSound.play();
 				return true;
 			}
 		}
-		if (!e.isDestroied && e instanceof Items && x <= e.x + e.width && x + width >= e.x && y <= e.y + e.height && y + height >= e.y && size < 4) {
+		if (!isDestroied && !e.isDestroyed() && e instanceof Items && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY() && size < 4) {
 			Items i = (Items) e;
 			e.isMarkedForDestroying();
 			if (i.type == 1) {
@@ -215,7 +223,7 @@ public class PlayerFish extends Entity implements Consumable {
 			else {
 				status.add(i);
 			}
-			MainGame.RenderableHolder.eatingSound.play();
+			shareObject.RenderableHolder.eatingSound.play();
 			return true;
 
 		}
@@ -233,7 +241,7 @@ public class PlayerFish extends Entity implements Consumable {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.playerSprite.getPixelReader(),
+		WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.playerSprite.getPixelReader(),
 				getAnimetionPosX(), 214, 125, 104);
 		if (direction == Direction.RIGHT) {
 

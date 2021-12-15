@@ -20,7 +20,7 @@ public class HowToPlayPage1Controller extends StackPane {
 	@FXML
 	private void nextPageClick(ActionEvent event) throws IOException {
 
-		MainGame.RenderableHolder.clickSound.play();
+		shareObject.RenderableHolder.clickSound.play();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage2.fxml"));
 		Parent root = loader.load();
@@ -38,7 +38,7 @@ public class HowToPlayPage1Controller extends StackPane {
 	@FXML
 	private void homeClick(ActionEvent event) throws IOException {
 
-		MainGame.RenderableHolder.clickSound.play();
+		shareObject.RenderableHolder.clickSound.play();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);

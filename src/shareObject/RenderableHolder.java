@@ -1,4 +1,4 @@
-package MainGame;
+package shareObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,14 +7,14 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
-import MainGame.RenderableHolder;
+import shareObject.RenderableHolder;
+import entity.EnemyFish;
+import entity.Items;
+import entity.PlayerFish;
+import entity.base.Entity;
 import gamelogic.EndRound;
-import gamelogic.EnemyFish;
-import gamelogic.Entity;
 import gamelogic.Field;
 import gamelogic.GamePanel;
-import gamelogic.Items;
-import gamelogic.PlayerFish;
 
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
@@ -26,11 +26,13 @@ public class RenderableHolder {
 	public static Image enemyFish2Sprite;
 	public static Image enemyFish3Sprite;
 	public static Image itemsSprite;
-	public static Image itemsSprite2;
 	public static Image playerSprite;
 	public static Image homeButton;
 	public static AudioClip  eatingSound;
 	public static AudioClip  clickSound;
+	public static AudioClip  winSound;
+	public static AudioClip  loseSound;
+	public static AudioClip  growUpSound;
 
 	static {
 		loadResource();
@@ -56,27 +58,32 @@ public class RenderableHolder {
 		enemyFish3Sprite = new Image(ClassLoader.getSystemResource("enemyfish3.png").toString());
 		playerSprite = new Image(ClassLoader.getSystemResource("player.png").toString());
 		itemsSprite = new Image(ClassLoader.getSystemResource("items1.png").toString());
-		itemsSprite2 = new Image(ClassLoader.getSystemResource("item2.png").toString());
 		homeButton = new Image(ClassLoader.getSystemResource("homeButton.png").toString());
 		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());
 		eatingSound.setVolume(0.3);
 		clickSound = new AudioClip(ClassLoader.getSystemResource("clickSound.wav").toString());
 		clickSound.setVolume(0.15);
+		winSound = new AudioClip(ClassLoader.getSystemResource("winSound.m4a").toString());
+		winSound.setVolume(0.3);
+		loseSound = new AudioClip(ClassLoader.getSystemResource("loseSound.m4a").toString());
+		loseSound.setVolume(0.3);
+		growUpSound= new AudioClip(ClassLoader.getSystemResource("growUp.m4a").toString());
+		growUpSound.setVolume(0.3);
 	}
 
 	public void add(IRenderable entity) {
-		System.out.println("add");
+//		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
-		for(IRenderable x: entities){
-			if(x instanceof PlayerFish) System.out.println("fish");
-			if(x instanceof EnemyFish) System.out.println("enemyfish");
-			if(x instanceof Field) System.out.println("field");
-			if(x instanceof GamePanel) System.out.println("panel");
-			if(x instanceof EndRound) System.out.println("endround");
-			if(x instanceof Items) System.out.println("item");
-			
-		}
+//		for(IRenderable x: entities){
+//			if(x instanceof PlayerFish) System.out.println("fish");
+//			if(x instanceof EnemyFish) System.out.println("enemyfish");
+//			if(x instanceof Field) System.out.println("field");
+//			if(x instanceof GamePanel) System.out.println("panel");
+//			if(x instanceof EndRound) System.out.println("endround");
+//			if(x instanceof Items) System.out.println("item");
+//			
+//		}
 	}
 	
 	public void reset() {

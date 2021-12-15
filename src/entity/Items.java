@@ -1,7 +1,8 @@
-package gamelogic;
+package entity;
 
 import java.util.Random;
 
+import entity.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.WritableImage;
 
@@ -52,7 +53,7 @@ public class Items extends Entity{
 //			gc.drawImage(croppedImage, x, y, width, height);
 //		}
 		
-			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.itemsSprite.getPixelReader(),
+			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.itemsSprite.getPixelReader(),
 				posX, posY, 40, 40);
 			gc.drawImage(croppedImage, x, y, width, height);
 		
@@ -77,6 +78,14 @@ public class Items extends Entity{
 			}
 		}
 
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public int getPosY() {
+		return posY;
 	}
 
 }

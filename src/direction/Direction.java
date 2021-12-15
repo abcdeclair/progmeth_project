@@ -1,4 +1,4 @@
-package logic;
+package direction;
 
 public enum Direction {
 	NONE,

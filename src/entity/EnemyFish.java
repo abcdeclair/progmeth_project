@@ -1,11 +1,13 @@
-package gamelogic;
+package entity;
 
 import java.util.Random;
 
+import direction.Direction;
+import entity.base.Consumable;
+import entity.base.Entity;
+import entity.base.Fish;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.WritableImage;
-
-import logic.Direction;
 
 public class EnemyFish extends Fish implements Consumable {
 
@@ -108,7 +110,7 @@ public class EnemyFish extends Fish implements Consumable {
 
 	public void beEated(PlayerFish player) {
 		// player.hitByMine();
-		MainGame.RenderableHolder.eatingSound.play();
+		shareObject.RenderableHolder.eatingSound.play();
 		this.isMarkedForDestroying();
 	}
 
@@ -124,7 +126,7 @@ public class EnemyFish extends Fish implements Consumable {
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if (getSize() == 1) {
-			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.enemyFish1Sprite.getPixelReader(),
+			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.enemyFish1Sprite.getPixelReader(),
 					getAnimetionPosX(), 1, 65, 45);
 			if (direction == Direction.RIGHT) {
 
@@ -134,7 +136,7 @@ public class EnemyFish extends Fish implements Consumable {
 				gc.drawImage(croppedImage, x, y, width, height);
 			}
 		} else if (getSize() == 2) {
-			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.enemyFish2Sprite.getPixelReader(),
+			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.enemyFish2Sprite.getPixelReader(),
 					getAnimetionPosX(), 363, 200, 180);
 			if (direction == Direction.RIGHT) {
 
@@ -144,7 +146,7 @@ public class EnemyFish extends Fish implements Consumable {
 				gc.drawImage(croppedImage, x, y, width, height);
 			}
 		} else if (getSize() == 3) {
-			WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.enemyFish3Sprite.getPixelReader(),
+			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.enemyFish3Sprite.getPixelReader(),
 					getAnimetionPosX(), 122, 270, 120);
 			if (direction == Direction.RIGHT) {
 
@@ -163,8 +165,8 @@ public class EnemyFish extends Fish implements Consumable {
 	@Override
 	public boolean consume(Entity e) {
 		// TODO Auto-generated method stub
-		if (!e.isDestroied && e instanceof PlayerFish && x <= e.x + e.width && x + width >= e.x && y <= e.y + e.height
-				&& y + height >= e.y) {
+		if (!e.isDestroyed() && e instanceof PlayerFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight()
+				&& y + height >= e.getY()) {
 			PlayerFish i = (PlayerFish) e;
 			if (i.getSize() < getSize() && !i.checkStatusType2() && !i.checkStatusType1()) {
 				e.isMarkedForDestroying();

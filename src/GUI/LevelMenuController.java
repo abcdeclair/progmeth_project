@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import MainGame.RenderableHolder;
 import drawing.GameScreen;
 import gamelogic.GameLogic;
 import input.InputUtility;
@@ -28,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import shareObject.RenderableHolder;
 
 public class LevelMenuController extends StackPane implements Initializable {
 
@@ -73,7 +73,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	private void level1Check(ActionEvent event) {
 		if (level1CheckBox.isSelected()) {
 
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 
 			level1Pic.setImage(levelCheck);
 			logic.setLevel(1);
@@ -90,7 +90,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 		}
 
 		else {
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 			level1Pic.setImage(levelUnlocked);
 		}
 
@@ -99,7 +99,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	@FXML
 	private void level2Check(ActionEvent event) {
 		if (level2CheckBox.isSelected()) {
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 
 			level2CheckBox.setSelected(true);
 			level2Pic.setImage(levelCheck);
@@ -118,7 +118,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 
 		else {
 
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 			level2Pic.setImage(levelUnlocked);
 		}
 	}
@@ -128,7 +128,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 
 		if (level3CheckBox.isSelected()) {
 
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 
 			level3CheckBox.setSelected(true);
 			level3Pic.setImage(levelCheck);
@@ -146,7 +146,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 		}
 
 		else {
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 			level3Pic.setImage(levelUnlocked);
 		}
 
@@ -156,7 +156,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		logic = new GameLogic();
-		if (Menu.getCurrentLevel() == 1) {
+		if (Main.getCurrentLevel() == 1) {
 			level1Pic.setImage(levelUnlocked);
 			level2Pic.setImage(levelLocked);
 			level3Pic.setImage(levelLocked);
@@ -166,7 +166,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 			level1CheckBox.setSelected(false);
 		}
 
-		else if (Menu.getCurrentLevel() == 2) {
+		else if (Main.getCurrentLevel() == 2) {
 			level1Pic.setImage(levelUnlocked);
 			level2Pic.setImage(levelUnlocked);
 			level3Pic.setImage(levelLocked);
@@ -177,7 +177,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 			level2CheckBox.setSelected(false);
 		}
 
-		else if (Menu.getCurrentLevel() == 3) {
+		else if (Main.getCurrentLevel() == 3) {
 			level1Pic.setImage(levelUnlocked);
 			level2Pic.setImage(levelUnlocked);
 			level3Pic.setImage(levelUnlocked);
@@ -191,10 +191,10 @@ public class LevelMenuController extends StackPane implements Initializable {
 	}
 
 	public void playGameClick(ActionEvent event) {
-		MainGame.RenderableHolder.clickSound.play();
+		shareObject.RenderableHolder.clickSound.play();
 		if (level1CheckBox.isSelected() || level2CheckBox.isSelected() || level3CheckBox.isSelected()) {
 
-			MainGame.RenderableHolder.clickSound.play();
+			shareObject.RenderableHolder.clickSound.play();
 
 			StackPane root = new StackPane();
 			Scene scene = new Scene(root);
@@ -208,8 +208,6 @@ public class LevelMenuController extends StackPane implements Initializable {
 			retrybtn = new Button("Retry");
 			retrybtn.setOpacity(0);
 			retrybtn.setCursor(Cursor.HAND);
-//		retrybtn.setLayoutX(250);
-//	    retrybtn.setLayoutY(220);
 			retrybtn.setPrefWidth(100);
 			retrybtn.setPrefHeight(100);
 			retrybtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -218,8 +216,8 @@ public class LevelMenuController extends StackPane implements Initializable {
 				public void handle(ActionEvent event) {
 
 					retrybtn.setVisible(false);
-//				logic.getRc().stop();
 					logic.reset();
+//					logic.getRc().stop();
 					animation.stop();
 //				logic.getRc().sleep(100);
 //				logic.getRc().interrupt();
