@@ -41,7 +41,7 @@ public class MenuController extends VBox implements Initializable {
 	public Button playgameButton;
 
 	@FXML
-	private void PlaygameClick(ActionEvent event) throws IOException {
+	private void playgameClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 //		
@@ -59,7 +59,7 @@ public class MenuController extends VBox implements Initializable {
 	public Button settingButton;
 
 	@FXML
-	private void SettingClick(ActionEvent event) throws IOException {
+	private void settingClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 //		
@@ -79,7 +79,7 @@ public class MenuController extends VBox implements Initializable {
 	public Button howtoplayButton;
 
 	@FXML
-	public void HowtoPlayClick(ActionEvent event) throws IOException {
+	public void howtoPlayClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 
@@ -98,9 +98,28 @@ public class MenuController extends VBox implements Initializable {
 	public Button exitButton;
 
 	@FXML
-	public void ExitClick(ActionEvent event) {
+	public void exitClick(ActionEvent event) {
 		Platform.exit();
 		System.exit(0);
+
+	}
+
+	@FXML
+	private Button creditButton;
+
+	@FXML
+	public void creditClick(ActionEvent event) throws IOException {
+		
+		shareObject.RenderableHolder.clickSound.play();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("creditPage.fxml"));
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		app_stage.setScene(scene);
+		app_stage.show();
 
 	}
 

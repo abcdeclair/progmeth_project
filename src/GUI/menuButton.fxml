@@ -19,7 +19,7 @@
             <Image url="@../../res/playgamebutton.png" />
          </image>
       </ImageView>
-      <Button fx:id="playgameButton" mnemonicParsing="false" onAction="#PlaygameClick" opacity="0.0" prefHeight="78.0" prefWidth="202.0">
+      <Button fx:id="playgameButton" mnemonicParsing="false" onAction="#playgameClick" opacity="0.0" prefHeight="78.0" prefWidth="202.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -32,7 +32,7 @@
             <Insets top="200.0" />
          </StackPane.margin>
       </ImageView>
-      <Button fx:id="settingButton" mnemonicParsing="false" onAction="#SettingClick" opacity="0.0" prefHeight="83.0" prefWidth="210.0" scaleShape="false">
+      <Button fx:id="settingButton" mnemonicParsing="false" onAction="#settingClick" opacity="0.0" prefHeight="83.0" prefWidth="210.0" scaleShape="false">
          <StackPane.margin>
             <Insets top="200.0" />
          </StackPane.margin>
@@ -47,7 +47,7 @@
             <Insets top="400.0" />
          </StackPane.margin>
       </ImageView>
-      <Button fx:id="howtoplayButton" mnemonicParsing="false" onAction="#HowtoPlayClick" opacity="0.0" prefHeight="77.0" prefWidth="202.0">
+      <Button fx:id="howtoplayButton" mnemonicParsing="false" onAction="#howtoPlayClick" opacity="0.0" prefHeight="77.0" prefWidth="202.0">
          <StackPane.margin>
             <Insets top="400.0" />
          </StackPane.margin>
@@ -63,9 +63,25 @@
             <Insets top="600.0" />
          </StackPane.margin>
       </ImageView>
-      <Button fx:id="exitButton" mnemonicParsing="false" onAction="#ExitClick" opacity="0.0" prefHeight="77.0" prefWidth="206.0">
+      <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitClick" opacity="0.0" prefHeight="77.0" prefWidth="206.0">
          <StackPane.margin>
             <Insets top="600.0" />
+         </StackPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="52.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../res/creditbutton.png" />
+         </image>
+         <StackPane.margin>
+            <Insets left="1200.0" top="670.0" />
+         </StackPane.margin>
+      </ImageView>
+      <Button fx:id="creditButton" mnemonicParsing="false" onAction="#creditClick" opacity="0.0" prefHeight="53.0" prefWidth="126.0">
+         <StackPane.margin>
+            <Insets left="1200.0" top="670.0" />
          </StackPane.margin>
          <cursor>
             <Cursor fx:constant="HAND" />
