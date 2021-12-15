@@ -3,12 +3,15 @@ package GUI;
 
 import javafx.scene.media.Media;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -48,6 +51,18 @@ public class Main extends Application{
 		primaryStage.setTitle("Mobiews_Ocean");
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			
+			@Override
+			public void handle(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+				Platform.exit();
+				System.exit(0);
+				
+			}
+		});
 
 	}
 
