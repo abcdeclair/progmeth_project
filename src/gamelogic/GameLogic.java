@@ -14,7 +14,7 @@ import entity.base.Entity;
 import shareObject.RenderableHolder;
 
 public class GameLogic {
-	private List<Entity> gameObjectContainer;
+	private static List<Entity> gameObjectContainer = new ArrayList<Entity>();
 
 	private PlayerFish player;
 	private boolean isLose;
@@ -24,13 +24,14 @@ public class GameLogic {
 	EndRound endingSene;
 	Thread t;
 	ThreadRunning rc;
+	Timer timer = new Timer();
 	
 	
 
 	public GameLogic() {
 //		MainGame.RenderableHolder.getInstance().getEntities().clear();
 		//level = 1;
-		this.gameObjectContainer = new ArrayList<Entity>();
+//		this.gameObjectContainer = new ArrayList<Entity>();
 		initialize();
 		player.setPositon(60, 250);
 		addNewObject(player);
@@ -47,6 +48,7 @@ public class GameLogic {
         isLose = false;
         isWin = false;
         shareObject.RenderableHolder.getInstance().reset();
+        shareObject.RenderableHolder.getInstance().update();
         gameObjectContainer.clear();
         
         if (player == null) {
@@ -59,8 +61,10 @@ public class GameLogic {
 	public void reset() {
 		isLose = false;
         isWin = false;
+        timer.cancel();
         shareObject.RenderableHolder.getInstance().reset();
         gameObjectContainer.clear();
+        System.out.println(gameObjectContainer.size());
         
         if (player == null) {
             player = new PlayerFish();
@@ -189,7 +193,6 @@ public class GameLogic {
 		Random random = new Random();
 		isLose = false;
 		isWin = false;
-		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
 				int n = random.nextInt(6);
@@ -200,6 +203,7 @@ public class GameLogic {
 				addNewObject(item);
 			}
 		}, 15000, 15000);
+		
 		for (int i = 0; i < 10; i++) {
 			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
@@ -237,7 +241,6 @@ public class GameLogic {
 		isLose = false;
 		isWin = false;
 		player.setSpeed(3);
-		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
 				int n = random.nextInt(6);
@@ -284,7 +287,6 @@ public class GameLogic {
 		isLose = false;
 		isWin = false;
 		player.setSpeed(4);
-		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
 				int n = random.nextInt(6);

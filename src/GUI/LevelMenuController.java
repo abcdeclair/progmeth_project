@@ -53,7 +53,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	Image levelUnlocked = new Image("file:res/levelUnlocked.png");
 	Image levelCheck = new Image("file:res/levelcheck.png");
 	private static Button retrybtn;
-	GameLogic logic;
+	GameLogic logic = new GameLogic();
 	AnimationTimer animation;
 
 //	public void getSelectedLevel() {
@@ -155,7 +155,6 @@ public class LevelMenuController extends StackPane implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		logic = new GameLogic();
 		if (Main.getCurrentLevel() == 1) {
 			level1Pic.setImage(levelUnlocked);
 			level2Pic.setImage(levelLocked);

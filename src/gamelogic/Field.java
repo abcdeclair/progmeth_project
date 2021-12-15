@@ -4,6 +4,11 @@ import javafx.scene.canvas.GraphicsContext;
 import shareObject.*;
 
 public class Field implements IRenderable {
+	private boolean isDestroyed;
+	
+	public void setDestroyed() {
+		this.isDestroyed = true;
+	}
 
 	@Override
 	public int getZ() {
@@ -18,7 +23,7 @@ public class Field implements IRenderable {
 	@Override
 	public boolean isDestroyed() {
 		// TODO Auto-generated method stub
-		return false;
+		return isDestroyed;
 	}
 
 	@Override

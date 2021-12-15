@@ -45,6 +45,7 @@ public class PlayerFish extends Fish implements Consumable {
 
 	public void reset() {
 		score = 0;
+		status.clear();
 		resetForNewLevel();
 	}
 
@@ -196,7 +197,7 @@ public class PlayerFish extends Fish implements Consumable {
 			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
 				e.isMarkedForDestroying();
 				setScore(score + 20*bonus);
-				setGrowth(growth + 5*bonus);
+				setGrowth(growth + 30*bonus);
 				shareObject.RenderableHolder.eatingSound.play();
 				return true;
 			}
