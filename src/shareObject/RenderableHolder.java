@@ -72,18 +72,18 @@ public class RenderableHolder {
 	}
 
 	public void add(IRenderable entity) {
-		System.out.println("add");
+//		System.out.println("add");
 		entities.add(entity);
 		Collections.sort(entities, comparator);
-		for(IRenderable x: entities){
-			if(x instanceof PlayerFish) System.out.println("fish");
-			if(x instanceof EnemyFish) System.out.println("enemyfish");
-			if(x instanceof Field) System.out.println("field");
-			if(x instanceof GamePanel) System.out.println("panel");
-			if(x instanceof EndRound) System.out.println("endround");
-			if(x instanceof Items) System.out.println("item");
+//		for(IRenderable x: entities){
+//			if(x instanceof PlayerFish) System.out.println("fish");
+//			if(x instanceof EnemyFish) System.out.println("enemyfish");
+//			if(x instanceof Field) System.out.println("field");
+//			if(x instanceof GamePanel) System.out.println("panel");
+//			if(x instanceof EndRound) System.out.println("endround");
+//			if(x instanceof Items) System.out.println("item");
 			
-		}
+//		}
 	}
 	
 	public void reset() {

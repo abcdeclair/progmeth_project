@@ -63,8 +63,8 @@ public class GameLogic {
         isWin = false;
         timer.cancel();
         shareObject.RenderableHolder.getInstance().reset();
+        shareObject.RenderableHolder.getInstance().update();
         gameObjectContainer.clear();
-        System.out.println(gameObjectContainer.size());
         
         if (player == null) {
             player = new PlayerFish();
@@ -202,7 +202,7 @@ public class GameLogic {
 				Items item = new Items(n, random.nextInt(1400));
 				addNewObject(item);
 			}
-		}, 15000, 15000);
+		}, 8000, 8000);
 		
 		for (int i = 0; i < 10; i++) {
 			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
@@ -250,7 +250,7 @@ public class GameLogic {
 				Items item = new Items(n, random.nextInt(1400));
 				addNewObject(item);
 			}
-		}, 15000, 15000);
+		}, 8000, 8000);
 		for (int i = 0; i < 8; i++) {
 			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
@@ -296,7 +296,7 @@ public class GameLogic {
 				Items item = new Items(n, random.nextInt(1400));
 				addNewObject(item);
 			}
-		}, 15000, 15000);
+		}, 8000, 8000);
 		for (int i = 0; i < 8; i++) {
 			EnemyFish enemyfish = new EnemyFish(1, random.nextInt(1400), random.nextInt(530)+170);
 			if (random.nextBoolean()) {
