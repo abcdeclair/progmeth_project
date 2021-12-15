@@ -73,6 +73,8 @@ public class LevelMenuController extends StackPane implements Initializable {
 	private void level1Check(ActionEvent event) {
 		if (level1CheckBox.isSelected()) {
 
+			MainGame.RenderableHolder.clickSound.play();
+
 			level1Pic.setImage(levelCheck);
 			logic.setLevel(1);
 
@@ -88,6 +90,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 		}
 
 		else {
+			MainGame.RenderableHolder.clickSound.play();
 			level1Pic.setImage(levelUnlocked);
 		}
 
@@ -96,6 +99,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	@FXML
 	private void level2Check(ActionEvent event) {
 		if (level2CheckBox.isSelected()) {
+			MainGame.RenderableHolder.clickSound.play();
 
 			level2CheckBox.setSelected(true);
 			level2Pic.setImage(levelCheck);
@@ -113,6 +117,8 @@ public class LevelMenuController extends StackPane implements Initializable {
 		}
 
 		else {
+
+			MainGame.RenderableHolder.clickSound.play();
 			level2Pic.setImage(levelUnlocked);
 		}
 	}
@@ -121,6 +127,8 @@ public class LevelMenuController extends StackPane implements Initializable {
 	private void level3Check(ActionEvent event) {
 
 		if (level3CheckBox.isSelected()) {
+
+			MainGame.RenderableHolder.clickSound.play();
 
 			level3CheckBox.setSelected(true);
 			level3Pic.setImage(levelCheck);
@@ -138,6 +146,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 		}
 
 		else {
+			MainGame.RenderableHolder.clickSound.play();
 			level3Pic.setImage(levelUnlocked);
 		}
 
@@ -183,79 +192,78 @@ public class LevelMenuController extends StackPane implements Initializable {
 
 	public void playGameClick(ActionEvent event) {
 		MainGame.RenderableHolder.clickSound.play();
-	
-		StackPane root = new StackPane();
-		Scene scene = new Scene(root);
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		app_stage.setScene(scene);
-		Menu.backgroundMusic.stop();
-		app_stage.setTitle("Mobiew's Ocean");
-		logic.settingLevel();
-		GameScreen gameScreen = new GameScreen(1400, 800);
-		retrybtn = new Button("Retry");
-		retrybtn.setOpacity(0);
-		retrybtn.setCursor(Cursor.HAND);
+		if (level1CheckBox.isSelected() || level2CheckBox.isSelected() || level3CheckBox.isSelected()) {
+
+			MainGame.RenderableHolder.clickSound.play();
+
+			StackPane root = new StackPane();
+			Scene scene = new Scene(root);
+			((Node) (event.getSource())).getScene().getWindow().hide();
+			Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			app_stage.setScene(scene);
+//		Menu.backgroundMusic.stop();
+			app_stage.setTitle("Mobiew's Ocean");
+			logic.settingLevel();
+			GameScreen gameScreen = new GameScreen(1400, 800);
+			retrybtn = new Button("Retry");
+			retrybtn.setOpacity(0);
+			retrybtn.setCursor(Cursor.HAND);
 //		retrybtn.setLayoutX(250);
 //	    retrybtn.setLayoutY(220);
-		retrybtn.setPrefWidth(100);
-		retrybtn.setPrefHeight(100);
-		retrybtn.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				
-				retrybtn.setVisible(false);
+			retrybtn.setPrefWidth(100);
+			retrybtn.setPrefHeight(100);
+			retrybtn.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+
+					retrybtn.setVisible(false);
 //				logic.getRc().stop();
-				logic.reset();
-				animation.stop();
+					logic.reset();
+					animation.stop();
 //				logic.getRc().sleep(100);
 //				logic.getRc().interrupt();
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
-				Parent root = new Parent() {
-				};
-				try {
-					root = loader.load();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Scene scene = new Scene(root);
-				Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-				((Node) (event.getSource())).getScene().getWindow().hide();
-				app_stage.setScene(scene);
-				app_stage.show();
-				
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
+					Parent root = new Parent() {
+					};
+					try {
+						root = loader.load();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Scene scene = new Scene(root);
+					Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					((Node) (event.getSource())).getScene().getWindow().hide();
+					app_stage.setScene(scene);
+					app_stage.show();
+
 //				Thread.currentThread().interrupt();
 //				logic.getT().interrupt();
 //				logic.getT().suspend();
-				
-			}
-		});
-		retrybtn.setVisible(false);
-		root.getChildren().add(gameScreen);
-		root.getChildren().add(retrybtn);
-		gameScreen.requestFocus();
-		app_stage.show();
-		
-		animation = new AnimationTimer() {
-			public void handle(long now) {
-				gameScreen.paintComponent();
-				logic.logicUpdate();
-				RenderableHolder.getInstance().update();
-				InputUtility.updateInputState();
-			}
-		};
-		animation.start();
-		
+
+				}
+			});
+			retrybtn.setVisible(false);
+			root.getChildren().add(gameScreen);
+			root.getChildren().add(retrybtn);
+			gameScreen.requestFocus();
+			app_stage.show();
+
+			animation = new AnimationTimer() {
+				public void handle(long now) {
+					gameScreen.paintComponent();
+					logic.logicUpdate();
+					RenderableHolder.getInstance().update();
+					InputUtility.updateInputState();
+				}
+			};
+			animation.start();
+		}
 	}
-	
-	
 
 	public static Button getRetrybtn() {
 		return retrybtn;
 	}
-
-	
 
 }

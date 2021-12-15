@@ -23,7 +23,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
-      <CheckBox fx:id="soundCheckBox" mnemonicParsing="false" opacity="0.0" prefHeight="62.0" prefWidth="61.0" selected="true">
+      <CheckBox fx:id="soundCheckBox" mnemonicParsing="false" onAction="#soundCheckClick" opacity="0.0" prefHeight="62.0" prefWidth="61.0">
          <StackPane.margin>
             <Insets left="165.0" top="115.0" />
          </StackPane.margin>

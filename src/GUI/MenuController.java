@@ -47,13 +47,11 @@ public class MenuController extends VBox implements Initializable {
 //		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("levelMenu.fxml"));
 		Parent root = loader.load();
-
-		((Node) (event.getSource())).getScene().getWindow().hide();
 		Scene scene = new Scene(root);
-		Stage app_stage = new Stage();
-		app_stage.initStyle(StageStyle.UNDECORATED);
+
+		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 		app_stage.setScene(scene);
-		app_stage.setResizable(false);
 		app_stage.show();
 	}
 
@@ -68,7 +66,6 @@ public class MenuController extends VBox implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("settingTask.fxml"));
 		Parent root = loader.load();
 
-		SettingController settingControl = loader.getController();
 		Scene scene = new Scene(root);
 		Stage app_stage = new Stage();
 		app_stage.initStyle(StageStyle.UNDECORATED);
@@ -84,6 +81,8 @@ public class MenuController extends VBox implements Initializable {
 	@FXML
 	public void HowtoPlayClick(ActionEvent event) throws IOException {
 
+		MainGame.RenderableHolder.clickSound.play();
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage1.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
@@ -93,7 +92,6 @@ public class MenuController extends VBox implements Initializable {
 		app_stage.setScene(scene);
 		app_stage.show();
 
-
 	}
 
 	@FXML
@@ -102,6 +100,7 @@ public class MenuController extends VBox implements Initializable {
 	@FXML
 	public void ExitClick(ActionEvent event) {
 		Platform.exit();
+		System.exit(0);
 
 	}
 

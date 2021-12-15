@@ -61,6 +61,7 @@ public class RenderableHolder {
 		eatingSound = new AudioClip(ClassLoader.getSystemResource("SoundEating.wav").toString());
 		eatingSound.setVolume(0.3);
 		clickSound = new AudioClip(ClassLoader.getSystemResource("clickSound.wav").toString());
+		clickSound.setVolume(0.15);
 	}
 
 	public void add(IRenderable entity) {

@@ -35,12 +35,30 @@ public class SettingController extends StackPane implements Initializable {
 
 	@FXML
 	private void backToMainMenu(ActionEvent event) {
-
+		
+		MainGame.RenderableHolder.clickSound.play();
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
 	@FXML
 	private void soundCheckClick() {
+		if (soundCheckBox.isSelected()) {
+			if (!Menu.soundPlayed) {
+				MainGame.RenderableHolder.eatingSound.setVolume(0.3);
+				MainGame.RenderableHolder.clickSound.setVolume(0.15);
+				checkSound.setVisible(true);
+			}
+			Menu.soundPlayed = true;
+		
+
+			System.out.println("play");
+		} else {
+			MainGame.RenderableHolder.eatingSound.setVolume(0);
+			MainGame.RenderableHolder.clickSound.setVolume(0);
+			Menu.soundPlayed = false;
+			System.out.println("stop");
+			checkSound.setVisible(false);
+		}
 
 	}
 
@@ -48,17 +66,21 @@ public class SettingController extends StackPane implements Initializable {
 	private void musicCheckClick(ActionEvent event) {
 
 		if (musicCheckBox.isSelected()) {
-			if (!Menu.played) {
+			if (!Menu.musicPlayed) {
+				
+				MainGame.RenderableHolder.clickSound.play();
 				Menu.backgroundMusic.play();
 				checkMusic.setVisible(true);
 			}
-			Menu.played = true;
+			Menu.musicPlayed = true;
 		
 
 			System.out.println("play");
 		} else {
+			
+			MainGame.RenderableHolder.clickSound.play();
 			Menu.backgroundMusic.stop();
-			Menu.played = false;
+			Menu.musicPlayed = false;
 			System.out.println("stop");
 			checkMusic.setVisible(false);
 		}
@@ -67,8 +89,11 @@ public class SettingController extends StackPane implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		checkMusic.setVisible(Menu.played);
-		musicCheckBox.setSelected(Menu.played);
+		checkMusic.setVisible(Menu.musicPlayed);
+		musicCheckBox.setSelected(Menu.musicPlayed);
+		
+		checkSound.setVisible(Menu.soundPlayed);
+		soundCheckBox.setSelected(Menu.soundPlayed);
 		
 	}
 

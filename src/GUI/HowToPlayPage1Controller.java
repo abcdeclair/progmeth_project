@@ -13,12 +13,14 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class HowToPlayPage1Controller extends StackPane {
-	
+
 	@FXML
 	private Button nextPageButton;
-	
+
 	@FXML
 	private void nextPageClick(ActionEvent event) throws IOException {
+
+		MainGame.RenderableHolder.clickSound.play();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("howToPlayPage2.fxml"));
 		Parent root = loader.load();
@@ -27,14 +29,16 @@ public class HowToPlayPage1Controller extends StackPane {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		app_stage.setScene(scene);
 		app_stage.show();
-		
+
 	}
-	
+
 	@FXML
 	private Button homeButton;
-	
+
 	@FXML
 	private void homeClick(ActionEvent event) throws IOException {
+
+		MainGame.RenderableHolder.clickSound.play();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
@@ -42,7 +46,7 @@ public class HowToPlayPage1Controller extends StackPane {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		app_stage.setScene(scene);
 		app_stage.show();
-		
+
 	}
 
 }

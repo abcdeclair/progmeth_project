@@ -20,7 +20,8 @@ public class Menu extends Application{
 	
 	public static final String bgm = "/originalsoundtrack.mp3";
 	public static AudioClip backgroundMusic;
-	public static boolean played = true;
+	public static boolean musicPlayed = true;
+	public static boolean soundPlayed = true;
 	private static int currentLevel = 1;
 
 	public static int getCurrentLevel() {
