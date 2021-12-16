@@ -46,6 +46,9 @@ public class SettingController extends StackPane implements Initializable {
 			if (!Main.soundPlayed) {
 				shareObject.RenderableHolder.eatingSound.setVolume(0.3);
 				shareObject.RenderableHolder.clickSound.setVolume(0.15);
+				shareObject.RenderableHolder.winSound.setVolume(0.3);
+				shareObject.RenderableHolder.loseSound.setVolume(0.3);
+				shareObject.RenderableHolder.growUpSound.setVolume(0.3);
 				checkSound.setVisible(true);
 			}
 			Main.soundPlayed = true;
@@ -55,6 +58,9 @@ public class SettingController extends StackPane implements Initializable {
 		} else {
 			shareObject.RenderableHolder.eatingSound.setVolume(0);
 			shareObject.RenderableHolder.clickSound.setVolume(0);
+			shareObject.RenderableHolder.winSound.setVolume(0);
+			shareObject.RenderableHolder.loseSound.setVolume(0);
+			shareObject.RenderableHolder.growUpSound.setVolume(0);
 			Main.soundPlayed = false;
 			System.out.println("stop");
 			checkSound.setVisible(false);

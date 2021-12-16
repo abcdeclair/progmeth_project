@@ -27,37 +27,6 @@ public class GameScreen extends Canvas {
 			InputUtility.setKeyPressed(event.getCode(), false);
 		});
 
-		this.setOnMousePressed((MouseEvent event) -> {
-			if (event.getButton() == MouseButton.PRIMARY)
-				InputUtility.mouseLeftDown();
-		});
-
-		this.setOnMouseReleased((MouseEvent event) -> {
-			if (event.getButton() == MouseButton.PRIMARY)
-				InputUtility.mouseLeftRelease();
-		});
-
-		this.setOnMouseEntered((MouseEvent event) -> {
-			InputUtility.mouseOnScreen = true;
-		});
-
-		this.setOnMouseExited((MouseEvent event) -> {
-			InputUtility.mouseOnScreen = false;
-		});
-
-		this.setOnMouseMoved((MouseEvent event) -> {
-			if (InputUtility.mouseOnScreen) {
-				InputUtility.mouseX = event.getX();
-				InputUtility.mouseY = event.getY();
-			}
-		});
-
-		this.setOnMouseDragged((MouseEvent event) -> {
-			if (InputUtility.mouseOnScreen) {
-				InputUtility.mouseX = event.getX();
-				InputUtility.mouseY = event.getY();
-			}
-		});
 	}
 
 	public void paintComponent() {
@@ -65,15 +34,14 @@ public class GameScreen extends Canvas {
 		gc.setFill(Color.BLACK);
 		try {
 			for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
-			// System.out.println(entity.getZ());
+				// System.out.println(entity.getZ());
 				if (entity.isVisible() && !entity.isDestroyed()) {
 					entity.draw(gc);
 				}
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 //			System.out.println("");
 		}
-		
 
 		// System.out.println("===============");
 		// System.out.println("===============");

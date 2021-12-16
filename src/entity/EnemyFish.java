@@ -11,7 +11,6 @@ import javafx.scene.image.WritableImage;
 
 public class EnemyFish extends Fish implements Consumable {
 
-
 	public EnemyFish(int size) {
 		this.setSize(size);
 		if (size == 1) {
@@ -46,20 +45,20 @@ public class EnemyFish extends Fish implements Consumable {
 					setAnimationPosX((getAnimetionPosX() + 66) % 990);
 					setAnimationtimer(0);
 				}
-				setAnimationtimer(getAnimationtimer()+1);
+				setAnimationtimer(getAnimationtimer() + 1);
 			} else if (getSize() == 2) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 201) % 3015);
 					setAnimationtimer(0);
 				}
-				setAnimationtimer(getAnimationtimer()+1);
+				setAnimationtimer(getAnimationtimer() + 1);
 
 			} else if (getSize() == 3) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 271) % 3794);
 					setAnimationtimer(0);
 				}
-				setAnimationtimer(getAnimationtimer()+1);
+				setAnimationtimer(getAnimationtimer() + 1);
 			}
 
 		} else if (direction == Direction.RIGHT) {
@@ -69,20 +68,20 @@ public class EnemyFish extends Fish implements Consumable {
 					setAnimationPosX((getAnimetionPosX() + 66) % 990);
 					setAnimationtimer(0);
 				}
-				setAnimationtimer(getAnimationtimer()+1);
+				setAnimationtimer(getAnimationtimer() + 1);
 			} else if (getSize() == 2) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 201) % 3015);
 					setAnimationtimer(0);
 				}
-				setAnimationtimer(getAnimationtimer()+1);
+				setAnimationtimer(getAnimationtimer() + 1);
 
 			} else if (getSize() == 3) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 271) % 3794);
 					setAnimationtimer(0);
 				}
-				setAnimationtimer(getAnimationtimer()+1);
+				setAnimationtimer(getAnimationtimer() + 1);
 			}
 		}
 
@@ -107,18 +106,12 @@ public class EnemyFish extends Fish implements Consumable {
 
 	}
 
-	public void beEated(PlayerFish player) {
-		// player.hitByMine();
-		shareObject.RenderableHolder.eatingSound.play();
-		this.isMarkedForDestroying();
-	}
-
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
 		if (getSize() == 1) {
-			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.enemyFish1Sprite.getPixelReader(),
-					getAnimetionPosX(), 1, 65, 45);
+			WritableImage croppedImage = new WritableImage(
+					shareObject.RenderableHolder.enemyFish1Sprite.getPixelReader(), getAnimetionPosX(), 1, 65, 45);
 			if (direction == Direction.RIGHT) {
 
 				gc.drawImage(croppedImage, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), x + width, y,
@@ -127,8 +120,8 @@ public class EnemyFish extends Fish implements Consumable {
 				gc.drawImage(croppedImage, x, y, width, height);
 			}
 		} else if (getSize() == 2) {
-			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.enemyFish2Sprite.getPixelReader(),
-					getAnimetionPosX(), 363, 200, 180);
+			WritableImage croppedImage = new WritableImage(
+					shareObject.RenderableHolder.enemyFish2Sprite.getPixelReader(), getAnimetionPosX(), 363, 200, 180);
 			if (direction == Direction.RIGHT) {
 
 				gc.drawImage(croppedImage, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), x + width, y,
@@ -137,8 +130,8 @@ public class EnemyFish extends Fish implements Consumable {
 				gc.drawImage(croppedImage, x, y, width, height);
 			}
 		} else if (getSize() == 3) {
-			WritableImage croppedImage = new WritableImage(shareObject.RenderableHolder.enemyFish3Sprite.getPixelReader(),
-					getAnimetionPosX(), 122, 270, 120);
+			WritableImage croppedImage = new WritableImage(
+					shareObject.RenderableHolder.enemyFish3Sprite.getPixelReader(), getAnimetionPosX(), 122, 270, 120);
 			if (direction == Direction.RIGHT) {
 
 				gc.drawImage(croppedImage, 0, 0, croppedImage.getWidth(), croppedImage.getHeight(), x + width, y,
@@ -156,8 +149,8 @@ public class EnemyFish extends Fish implements Consumable {
 	@Override
 	public boolean consume(Entity e) {
 		// TODO Auto-generated method stub
-		if (!e.isDestroyed() && e instanceof PlayerFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight()
-				&& y + height >= e.getY()) {
+		if (!e.isDestroyed() && e instanceof PlayerFish && x <= e.getX() + e.getWidth() && x + width >= e.getX()
+				&& y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
 			PlayerFish i = (PlayerFish) e;
 			if (i.getSize() < getSize() && !i.checkStatusType2() && !i.checkStatusType1()) {
 				e.isMarkedForDestroying();

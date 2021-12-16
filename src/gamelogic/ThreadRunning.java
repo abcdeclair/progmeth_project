@@ -7,16 +7,16 @@ import entity.EnemyFish;
 import entity.PlayerFish;
 import entity.base.Entity;
 
-public class ThreadRunning implements Runnable{
+public class ThreadRunning implements Runnable {
 	private Entity e;
-	private	PlayerFish player;
+	private PlayerFish player;
 	GameLogic logic;
 	private volatile boolean exit = false;
-	
-	   public void stop() {
-	      exit = true;
-	      System.out.println("Stop");
-	   }
+
+	public void stop() {
+		exit = true;
+		System.out.println("Stop");
+	}
 
 	public ThreadRunning(Entity e, PlayerFish player, GameLogic logic) {
 		// TODO Auto-generated constructor stub
@@ -24,8 +24,7 @@ public class ThreadRunning implements Runnable{
 		this.player = player;
 		this.logic = logic;
 	}
-	
-	
+
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -35,14 +34,7 @@ public class ThreadRunning implements Runnable{
 				Random random = new Random();
 				if (e instanceof EnemyFish) {
 					EnemyFish i = (EnemyFish) e;
-//					EnemyFish enemyfish = new EnemyFish(i.getSize(), 1600, random.nextInt(530) + 170);
-//					if (random.nextBoolean()) {
-//						enemyfish.setDirection(Direction.LEFT);
-//					} else {
-//						enemyfish.setDirection(Direction.RIGHT);
-//					}
-//					logic.addNewObject(enemyfish);
-					
+
 					i.setPositon(1600, random.nextInt(530) + 170);
 					if (random.nextBoolean()) {
 						i.setDirection(Direction.LEFT);
@@ -59,6 +51,5 @@ public class ThreadRunning implements Runnable{
 			}
 		}
 	}
-	
 
 }

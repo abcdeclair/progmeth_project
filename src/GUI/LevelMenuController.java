@@ -252,7 +252,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 					gameScreen.paintComponent();
 					logic.logicUpdate();
 					RenderableHolder.getInstance().update();
-					InputUtility.updateInputState();
+
 				}
 			};
 			animation.start();
