@@ -11,10 +11,9 @@ import javafx.scene.image.WritableImage;
 
 public class EnemyFish extends Fish implements Consumable {
 
-	private int size;
 
 	public EnemyFish(int size) {
-		this.size = size;
+		this.setSize(size);
 		if (size == 1) {
 			width = 60;
 			height = 45;
@@ -42,20 +41,20 @@ public class EnemyFish extends Fish implements Consumable {
 		Random random = new Random();
 		if (direction == Direction.LEFT) {
 			x -= random.nextInt(1) + 1;
-			if (size == 1) {
+			if (getSize() == 1) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 66) % 990);
 					setAnimationtimer(0);
 				}
 				setAnimationtimer(getAnimationtimer()+1);
-			} else if (size == 2) {
+			} else if (getSize() == 2) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 201) % 3015);
 					setAnimationtimer(0);
 				}
 				setAnimationtimer(getAnimationtimer()+1);
 
-			} else if (size == 3) {
+			} else if (getSize() == 3) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 271) % 3794);
 					setAnimationtimer(0);
@@ -65,20 +64,20 @@ public class EnemyFish extends Fish implements Consumable {
 
 		} else if (direction == Direction.RIGHT) {
 			x += random.nextInt(1) + 1;
-			if (size == 1) {
+			if (getSize() == 1) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 66) % 990);
 					setAnimationtimer(0);
 				}
 				setAnimationtimer(getAnimationtimer()+1);
-			} else if (size == 2) {
+			} else if (getSize() == 2) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 201) % 3015);
 					setAnimationtimer(0);
 				}
 				setAnimationtimer(getAnimationtimer()+1);
 
-			} else if (size == 3) {
+			} else if (getSize() == 3) {
 				if (getAnimationtimer() == 10) {
 					setAnimationPosX((getAnimetionPosX() + 271) % 3794);
 					setAnimationtimer(0);
@@ -112,14 +111,6 @@ public class EnemyFish extends Fish implements Consumable {
 		// player.hitByMine();
 		shareObject.RenderableHolder.eatingSound.play();
 		this.isMarkedForDestroying();
-	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
 	}
 
 	@Override

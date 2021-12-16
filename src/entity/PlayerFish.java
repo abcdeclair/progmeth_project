@@ -19,7 +19,6 @@ import javafx.scene.paint.Color;
 
 public class PlayerFish extends Fish implements Consumable {
 	private int score = 0;
-	private int size = 1;
 	private int growth = 0;
 	private List<Items> status;
 	private float speed = 2;
@@ -36,7 +35,7 @@ public class PlayerFish extends Fish implements Consumable {
 	}
 
 	public void resetForNewLevel() {
-		size = 1;
+		setSize(1);
 		growth = 0;
 		width = 76;
 		height = 52;
@@ -63,30 +62,23 @@ public class PlayerFish extends Fish implements Consumable {
 		this.score = score;
 	}
 
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
-	}
-
 	public int getGrowth() {
 		return growth;
 	}
 
 	public void setGrowth(int growth) {
-		if (growth < 0) growth = 0;
+		if (growth < 0)
+			growth = 0;
 		this.growth = growth;
 		if (this.growth >= 100) {
 			width *= 1.5;
 			height *= 1.5;
 			this.growth = 0;
-			this.size++;
-			if(size != 4) {
+			setSize(getSize() + 1);
+			if (getSize() != 4) {
 				shareObject.RenderableHolder.growUpSound.play();
 			}
-			
+
 		}
 	}
 
@@ -98,7 +90,7 @@ public class PlayerFish extends Fish implements Consumable {
 		}
 		return false;
 	}
-	
+
 	public void removeStatusType1(Items i) {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -108,7 +100,7 @@ public class PlayerFish extends Fish implements Consumable {
 			}
 		}, 5000);
 	}
-	
+
 	public void removeStatusType4(Items i) {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -165,9 +157,9 @@ public class PlayerFish extends Fish implements Consumable {
 	public void move() {
 		// TODO Auto-generated method stub
 		if (InputUtility.getKeyPressed(KeyCode.W) && 170 <= y) {
-			y -= speed/2;
+			y -= speed / 2;
 		} else if (InputUtility.getKeyPressed(KeyCode.S) && y <= 800 - height) {
-			y += speed/2;
+			y += speed / 2;
 		}
 		if (InputUtility.getKeyPressed(KeyCode.A) && 0 <= x) {
 			x -= speed;
@@ -177,7 +169,7 @@ public class PlayerFish extends Fish implements Consumable {
 			}
 			setAnimationtimer(getAnimationtimer() + 1);
 			direction = Direction.LEFT;
-		} else if (InputUtility.getKeyPressed(KeyCode.D) && x <= 1400-width) {
+		} else if (InputUtility.getKeyPressed(KeyCode.D) && x <= 1400 - width) {
 			x += speed;
 			if (getAnimationtimer() == 10) {
 				setAnimationPosX((getAnimetionPosX() + 126) % 1890);
@@ -192,36 +184,34 @@ public class PlayerFish extends Fish implements Consumable {
 	@Override
 	public boolean consume(Entity e) {
 		// TODO Auto-generated method stub
-		if (!isDestroyed && !e.isDestroyed() && e instanceof EnemyFish && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
+		if (!isDestroyed && !e.isDestroyed() && e instanceof EnemyFish && x <= e.getX() + e.getWidth()
+				&& x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY()) {
 			EnemyFish i = (EnemyFish) e;
-			if ((i.getSize() <= getSize() || checkStatusType1()) && size < 4) {
+			if ((i.getSize() <= getSize() || checkStatusType1()) && getSize() < 4) {
 //				e.isMarkedForDestroying();
-				setScore(score + 20*bonus);
-				setGrowth(growth + 20*bonus);
+				setScore(score + 20 * bonus);
+				setGrowth(growth + 20 * bonus);
 				shareObject.RenderableHolder.eatingSound.play();
 				return true;
 			}
 		}
-		if (!isDestroyed && !e.isDestroyed() && e instanceof Items && x <= e.getX() + e.getWidth() && x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY() && size < 4) {
+		if (!isDestroyed && !e.isDestroyed() && e instanceof Items && x <= e.getX() + e.getWidth()
+				&& x + width >= e.getX() && y <= e.getY() + e.getHeight() && y + height >= e.getY() && getSize() < 4) {
 			Items i = (Items) e;
 			e.isMarkedForDestroying();
 			if (i.type == 1) {
 				status.add(i);
 				speed *= 1.5;
 				removeStatusType1(i);
-			}
-			else if (i.type == 3) {
+			} else if (i.type == 3) {
 				setGrowth(growth + 50);
-			}
-			else if (i.type == 4) {
+			} else if (i.type == 4) {
 				status.add(i);
 				bonus *= 2;
 				removeStatusType4(i);
-			}
-			else if (i.type == 5) {
+			} else if (i.type == 5) {
 				setGrowth(growth - 50);
-			}
-			else {
+			} else {
 				status.add(i);
 			}
 			shareObject.RenderableHolder.eatingSound.play();
@@ -254,7 +244,7 @@ public class PlayerFish extends Fish implements Consumable {
 //		WritableImage croppedImage = new WritableImage(MainGame.RenderableHolder.playerSprite.getPixelReader(),
 //				250, 414, 500, 500);
 //		gc.drawImage(croppedImage, x, y, 300, 300);
-		
+
 //		gc.drawImage(croppedImage, x, y, width, height);
 
 //		gc.setLineWidth(2.0);
