@@ -18,13 +18,13 @@ import javafx.stage.Stage;
 public class SettingController extends StackPane implements Initializable {
 
 	@FXML
-	public Button backToMainButton;
+	private Button backToMainButton;
 
 	@FXML
-	public CheckBox musicCheckBox;
+	private CheckBox musicCheckBox;
 
 	@FXML
-	public CheckBox soundCheckBox;
+	private CheckBox soundCheckBox;
 	
 	@FXML
 	private ImageView checkMusic;
@@ -34,14 +34,14 @@ public class SettingController extends StackPane implements Initializable {
 	
 
 	@FXML
-	private void backToMainMenu(ActionEvent event) {
+	public void backToMainMenu(ActionEvent event) {
 		
 		shareObject.RenderableHolder.clickSound.play();
 		((Node) (event.getSource())).getScene().getWindow().hide();
 	}
 
 	@FXML
-	private void soundCheckClick() {
+	public void soundCheckClick() {
 		if (soundCheckBox.isSelected()) {
 			if (!Main.soundPlayed) {
 				shareObject.RenderableHolder.eatingSound.setVolume(0.3);
@@ -69,7 +69,7 @@ public class SettingController extends StackPane implements Initializable {
 	}
 
 	@FXML
-	private void musicCheckClick(ActionEvent event) {
+	public void musicCheckClick(ActionEvent event) {
 
 		if (musicCheckBox.isSelected()) {
 			if (!Main.musicPlayed) {

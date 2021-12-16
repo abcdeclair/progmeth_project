@@ -38,7 +38,7 @@ import shareObject.RenderableHolder;
 public class MenuController extends VBox implements Initializable {
 
 	@FXML
-	public Button playgameButton;
+	private Button playgameButton;
 
 	@FXML
 	private void playgameClick(ActionEvent event) throws IOException {
@@ -56,10 +56,10 @@ public class MenuController extends VBox implements Initializable {
 	}
 
 	@FXML
-	public Button settingButton;
+	private Button settingButton;
 
 	@FXML
-	private void settingClick(ActionEvent event) throws IOException {
+	public void settingClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 //		
@@ -76,7 +76,7 @@ public class MenuController extends VBox implements Initializable {
 	}
 
 	@FXML
-	public Button howtoplayButton;
+	private Button howtoplayButton;
 
 	@FXML
 	public void howtoPlayClick(ActionEvent event) throws IOException {
@@ -95,7 +95,7 @@ public class MenuController extends VBox implements Initializable {
 	}
 
 	@FXML
-	public Button exitButton;
+	private Button exitButton;
 
 	@FXML
 	public void exitClick(ActionEvent event) {

@@ -71,7 +71,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 //	}
 
 	@FXML
-	private void level1Check(ActionEvent event) {
+	public void level1Check(ActionEvent event) {
 		if (level1CheckBox.isSelected()) {
 
 			shareObject.RenderableHolder.clickSound.play();
@@ -98,7 +98,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	}
 
 	@FXML
-	private void level2Check(ActionEvent event) {
+	public void level2Check(ActionEvent event) {
 		if (level2CheckBox.isSelected()) {
 			shareObject.RenderableHolder.clickSound.play();
 
@@ -125,7 +125,7 @@ public class LevelMenuController extends StackPane implements Initializable {
 	}
 
 	@FXML
-	private void level3Check(ActionEvent event) {
+	public void level3Check(ActionEvent event) {
 
 		if (level3CheckBox.isSelected()) {
 

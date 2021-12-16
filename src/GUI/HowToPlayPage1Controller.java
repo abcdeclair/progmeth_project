@@ -18,7 +18,7 @@ public class HowToPlayPage1Controller extends StackPane {
 	private Button nextPageButton;
 
 	@FXML
-	private void nextPageClick(ActionEvent event) throws IOException {
+	public void nextPageClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 
@@ -36,7 +36,7 @@ public class HowToPlayPage1Controller extends StackPane {
 	private Button homeButton;
 
 	@FXML
-	private void homeClick(ActionEvent event) throws IOException {
+	public void homeClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("menuButton.fxml"));

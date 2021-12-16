@@ -18,7 +18,7 @@ public class HowToPlayPage2Controller extends StackPane {
 	private Button homeButton;
 
 	@FXML
-	private void homeClick(ActionEvent event) throws IOException {
+	public void homeClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 
@@ -36,7 +36,7 @@ public class HowToPlayPage2Controller extends StackPane {
 	private Button backButton;
 
 	@FXML
-	private void backClick(ActionEvent event) throws IOException {
+	public void backClick(ActionEvent event) throws IOException {
 
 		shareObject.RenderableHolder.clickSound.play();
 
