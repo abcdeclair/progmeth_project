@@ -9,7 +9,7 @@ public abstract class Fish extends Entity {
 		super();
 		animationPosX = 1;
 		animationtimer = 0;
-
+		size = 1;
 	}
 
 	public int getAnimetionPosX() {

@@ -63,12 +63,17 @@ public class GameScreen extends Canvas {
 	public void paintComponent() {
 		GraphicsContext gc = this.getGraphicsContext2D();
 		gc.setFill(Color.BLACK);
-		for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
+		try {
+			for (IRenderable entity : RenderableHolder.getInstance().getEntities()) {
 			// System.out.println(entity.getZ());
-			if (entity.isVisible() && !entity.isDestroyed()) {
-				entity.draw(gc);
+				if (entity.isVisible() && !entity.isDestroyed()) {
+					entity.draw(gc);
+				}
 			}
+		}catch(Exception e){
+//			System.out.println("");
 		}
+		
 
 		// System.out.println("===============");
 		// System.out.println("===============");
@@ -76,4 +81,3 @@ public class GameScreen extends Canvas {
 	}
 
 }
-
